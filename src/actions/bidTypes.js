@@ -1,0 +1,5 @@
+export const BID_FETCH = 'BID_FETCH'
+export const BID_PENDING = 'BID_PENDING'
+export const BID_ERROR = 'BID_ERROR'
+export const BID_SUCCESS = 'BID_SUCCESS'
+export const LOAD_BID = 'LOAD_BID'
