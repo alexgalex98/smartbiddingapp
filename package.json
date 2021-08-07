@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.12.2",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
@@ -10,11 +11,15 @@
     "bootstrap": "^4.6.0",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.0",
+    "react-countdown": "^2.3.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
+    "react-native-countdown-component": "^2.7.1",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-saga": "^0.3.1",
     "react-scripts": "4.0.3",
+    "react-timer-hook": "^3.0.4",
     "tachyons": "^4.12.0",
     "web-vitals": "^1.1.2"
   },
@@ -41,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.14.5"
   }
 }

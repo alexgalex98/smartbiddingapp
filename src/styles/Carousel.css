@@ -1,0 +1,63 @@
+.carousel-inner {
+  height: 90vh !important;
+  /* overflow: scroll !important; */
+}
+/* .carousel-item {
+    height: 100% !important;
+    width: auto !important;
+    min-width: 100%;
+  } */
+/*
+  .next {
+    line-height: 1;
+    color: black !important;
+    font-size: 30px;
+    width: 100%;
+  }
+  .indicator {
+    top: 0;
+    left: 0;
+    width: 10px !important;
+    height: 10px !important;
+    content: "\2022" !important;
+    text-align: center !important;
+    opacity: 1 !important;
+    background-color: #fff !important;
+  }
+  .active {
+    width: 20px !important;
+    height: 20px !important;
+    cursor: pointer;
+  } 
+  
+  .carousel-inner > .item {
+    display: none;
+    position: relative;
+    -webkit-transition: 0.6s ease-in-out left;
+    -o-transition: 0.6s ease-in-out left;
+    transition: 0.6s ease-in-out left;
+    overflow: visible;
+  }
+  
+  .carousel-inner > .item {
+    -webkit-transition: 0s !important;
+    -o-transition: 0s !important;
+    transition: 0s !important;
+  }
+  
+  .carousel-item {
+    width: 99%;
+    overflow-x: hidden;
+  }
+  
+  .carousel-item-next.carousel-item-left {
+    display: block !important;
+  } */
+.row {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+.marginT {
+  margin-top: 5% !important;
+  margin-bottom: 5% !important;
+}

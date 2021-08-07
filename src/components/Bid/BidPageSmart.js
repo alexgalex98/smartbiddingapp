@@ -4,6 +4,9 @@ import { fetchBid, loadBid } from "../../actions/bidActions";
 import { fetchBidders, loadBidders } from "../../actions/getBiddersAction";
 import { bidForItemRequest } from "../../actions/bidForItemActions";
 import Bid from "./Bid";
+import MyCountdown from "../itemsPage/MyCountdown";
+import { Link } from "@material-ui/core";
+import NavBar from "../Navbar";
 
 function BidPageSmart({
   bidData,
@@ -32,7 +35,7 @@ function BidPageSmart({
     newbid.price = price;
     console.log("fjffjj", newbid);
     fetchBidders();
-    window.location.reload(false);
+    window.location.replace(`${bidData.bid.id}`);
   };
   //console.log("BAUUUUSE",match.params.id)
   useEffect(() => {
@@ -42,23 +45,26 @@ function BidPageSmart({
     loadBidders(match.params.id);
     //fetchBidders()
   }, [fetchBid, bidForItemRequest]);
-  {
-    console.log(biddersData, "MIAUUU");
-  }
+
+  console.log(biddersData, "MIAUUU");
   return bidData.loading ? (
     <h2>Loading</h2>
   ) : bidData.error ? (
     <h2>{bidData.error}</h2>
   ) : (
     <div>
-      <div></div>
       <div>
+        <NavBar></NavBar>
+      </div>
+      <div>
+        {/* {<MyCountdown sec={bidData.bid.secondsleft * 1000} />} */}
         {
           <Bid
             bid={bidData.bid}
             onPriceChange={onPriceChange}
             onBidSubmit={onBidSubmit}
             bidders={biddersData}
+            secondsleft={bidData.bid.secondsleft}
           ></Bid>
         }
       </div>

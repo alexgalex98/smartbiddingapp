@@ -9,7 +9,7 @@ import {
 import { useHistory } from "react-router-dom";
 import NewBid from "./NewBid";
 
-function NewBidSmart({ newBidData, newBidReq, succes, isSuccess }) {
+function NewBidSmart({ newBidData, newBidReq, success, isSuccess }) {
   const [name, setName] = useState("cafea");
   const [category, setCategory] = useState("home");
   const [description, setDescription] = useState("blalalal");

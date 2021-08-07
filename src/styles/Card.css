@@ -1,0 +1,140 @@
+/* .card {
+  min-height: 200px;
+  margin-top: 20px;
+}
+
+.card-body {
+  padding: 2.5rem 1.2rem !important;
+  min-height: 250px !important;
+}
+
+.container-fluid.row {
+  padding: 10px;
+}
+
+.card-img-top {
+  height: 50%px;
+  width: auto;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.div {
+}
+
+.overflow-ellipsis {
+  text-overflow: ellipsis;
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.parentbtn {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+}
+.btnDiv {
+  margin: 0 auto;
+} */
+.card {
+  min-height: 200px;
+  margin-top: 20px;
+}
+
+.card-body {
+  padding: 1.5rem 1.2rem !important;
+  /* min-height: 250px !important; */
+  padding-bottom: 2.5rem !important;
+}
+
+.container-fluid.row {
+  padding: 10px;
+}
+
+.card-img-top {
+  /* height: 50%; */
+  width: auto;
+  /* padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px; */
+  /* width: 100px; */
+  height: 200px;
+  object-fit: scale-down;
+  /* object-fit: cover; */
+}
+
+.overflow-ellipsis {
+  text-overflow: ellipsis;
+  /* max-width: 100px; */
+  white-space: nowrap;
+  overflow: hidden;
+}
+.parentbtn {
+  position: absolute;
+  bottom: 20px;
+  width: 100% !important;
+  margin-left: 10%;
+}
+.btnDiv {
+  margin: 0 auto;
+}
+.time {
+  /* border: 1px solid green; */
+  overflow: hidden; /* if you don't want #second to wrap below #first */
+  text-align: right !important;
+  font-size: 12px;
+}
+.bid {
+  float: left; /* add this */
+  /* border: 1px solid red; */
+  margin-bottom: 0 !important;
+  font-size: 12px;
+}
+
+.wrapper {
+  /* border: 1px solid black; */
+  overflow: hidden;
+  margin-bottom: 14%;
+}
+
+.cardlist {
+  margin: 0%;
+}
+
+.row {
+  padding-left: 1px;
+}
+.column {
+  padding: 0.5% !important;
+  margin-top: -20px;
+}
+.price {
+  color: #74b72e;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0 !important;
+  font-size: 13px;
+}
+.timeperiod {
+  font-size: 13px;
+  font-weight: bold;
+}
+.wrapper p {
+  margin-bottom: 0px !important;
+}
+
+.bidbtn {
+  color: #f4976c !important;
+  border-color: #f4976c !important ;
+  align-self: center;
+  width: 80% !important;
+}
+.bidbtn:hover {
+  color: #ffffff !important;
+  background-color: #f4976c !important ;
+}
+
+.title {
+  font-size: 20px;
+  color: black;
+}

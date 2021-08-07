@@ -3,7 +3,7 @@ import ItemsPageSmart from "./itemsPage/ItemsPageSmart";
 import NavBar from "./Navbar";
 import SignInSmart from "./SignInRegister/SignInSmart";
 import React, { useState } from "react";
-import HomePage from "./HomePage";
+import HomePage from "./homepage/HomePage";
 import RegisterSmart from "./SignInRegister/RegisterSmart";
 import NewBid from "./addNewBid/NewBid";
 import NewBidSmart from "./addNewBid/NewBidSmart";
@@ -12,8 +12,11 @@ import Signout from "./SignInRegister/Signout";
 import BidPageSmart from "./Bid/BidPageSmart";
 import { FileUpload } from "./FileUpload/FileUpload";
 import { FormExample } from "./FileUpload/FormExample";
-import { AdminPage } from "./Admin/AdminPage";
-
+import AdminPageSmart from "./Admin/AdminPageSmart";
+import MyItemsPageSmart from "./myitems/myItemsPageSmart";
+import OnBiddedItemsPageSmart from "./onBiddedItems/onBiddedItemsPageSmart";
+import UpdateBid from "./UpdateBid/UpdateBId";
+import UpdatePageSmart from "./UpdateBid/UpdatePageSmart";
 export default function Routes() {
   // const [activeIndex, setActiveIndex] = React.useState('home');
   // const [t] = useTranslation();
@@ -54,7 +57,6 @@ export default function Routes() {
           <Route exact path="/register">
             {
               <div>
-                <NavBar></NavBar>
                 <RegisterSmart></RegisterSmart>
               </div>
             }
@@ -82,8 +84,21 @@ export default function Routes() {
             <FormExample></FormExample>
           </Route>
           <Route exact path="/adminPage">
-            <AdminPage></AdminPage>
+            <AdminPageSmart></AdminPageSmart>
           </Route>
+          <Route exact path="/myItems">
+            <NavBar></NavBar>
+            <MyItemsPageSmart></MyItemsPageSmart>
+          </Route>
+          <Route exact path="/updateBid/">
+            <NavBar></NavBar>
+            <UpdatePageSmart></UpdatePageSmart>
+          </Route>
+          <Route exact patch="/onBiddedItems">
+            <NavBar></NavBar>
+            <OnBiddedItemsPageSmart></OnBiddedItemsPageSmart>
+          </Route>
+
           {/* {<div>Hello <BidPageSmart></BidPageSmart></div>}
             </Route> */}
 

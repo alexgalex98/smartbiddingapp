@@ -23,7 +23,7 @@ function* newBidRequest(props) {
       props.created_by
     );
     console.log("RESPP", response);
-    if (response != undefined) {
+    if (response !== undefined) {
       console.log("response", response);
       yield put(
         newBidSucces(
