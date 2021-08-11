@@ -1,11 +1,11 @@
 import { all } from "@redux-saga/core/effects";
 import { watchFetchBidAsync } from "./bidPageSaga";
 import { watchFetchBiddersAsync } from "./getBiddersSaga";
-import { watchFetchItemsAsync } from "./ItemsPageSaga";
+import { watchFetchExpiredAsync, watchFetchItemsAsync } from "./ItemsPageSaga";
 import { watchnewBidAsync } from "./NewBidPageSaga";
 import { watchRegisterAsync } from "./registerPageSaga";
 import { watchSignInAsync } from "./singInPageSaga";
-import { watchbidForItemAsync } from "./bidForItemSaga";
+import { watchbidForItemAsync, watchbuyItemAsync } from "./bidForItemSaga";
 import { watchFetchOnBiddedItemsAsync } from "./onBiddedItemsPageSaga";
 import {
   watchApproveItemAsync,
@@ -13,6 +13,10 @@ import {
 } from "./approveItemSaga";
 import { watchFetchMyItemsAsync } from "./myItemsPageSaga";
 import { watchFetchUpdateItemAsync } from "./updateItemSaga";
+import { watchFetchWonItemsAsync } from "./wonItemsPageSaga";
+import { watchFetchLastItemsAsync } from "./lastItemsPageSaga";
+import { watchFetchSimilarItemsAsync } from "./similarItemsPageSaga";
+import { watchFetchMostPopularItemsAsync } from "./mostPopularItemsPageSaga";
 
 export default function* rootSaga() {
   yield all([
@@ -28,5 +32,11 @@ export default function* rootSaga() {
     watchFetchMyItemsAsync(),
     watchFetchOnBiddedItemsAsync(),
     watchFetchUpdateItemAsync(),
+    watchbuyItemAsync(),
+    watchFetchExpiredAsync(),
+    watchFetchWonItemsAsync(),
+    watchFetchLastItemsAsync(),
+    watchFetchSimilarItemsAsync(),
+    watchFetchMostPopularItemsAsync(),
   ]);
 }

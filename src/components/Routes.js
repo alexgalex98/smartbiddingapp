@@ -17,6 +17,7 @@ import MyItemsPageSmart from "./myitems/myItemsPageSmart";
 import OnBiddedItemsPageSmart from "./onBiddedItems/onBiddedItemsPageSmart";
 import UpdateBid from "./UpdateBid/UpdateBId";
 import UpdatePageSmart from "./UpdateBid/UpdatePageSmart";
+import WonItemsPageSmart from "./wonItems/wonItemsPageSmart";
 export default function Routes() {
   // const [activeIndex, setActiveIndex] = React.useState('home');
   // const [t] = useTranslation();
@@ -94,9 +95,13 @@ export default function Routes() {
             <NavBar></NavBar>
             <UpdatePageSmart></UpdatePageSmart>
           </Route>
-          <Route exact patch="/onBiddedItems">
+          <Route exact path="/onBiddedItems">
             <NavBar></NavBar>
             <OnBiddedItemsPageSmart></OnBiddedItemsPageSmart>
+          </Route>
+          <Route exact path="/wonItems">
+            <NavBar></NavBar>
+            <WonItemsPageSmart></WonItemsPageSmart>
           </Route>
 
           {/* {<div>Hello <BidPageSmart></BidPageSmart></div>}

@@ -10,6 +10,12 @@ import ApproveItemReducer from "./approveItemReducer";
 import MyItemsReducer from "./myItemsReducer";
 import OnBiddedItemsReducer from "./onBiddedItemsReducer";
 import UpdateItemReducer from "./updateItemReducer";
+import BuyItemReducer from "./buyItemReducer";
+import ExpiredItemsReducer from "./expiredItemsReducer";
+import WonItemsReducer from "./wonItemsReducer";
+import LastItemsReducer from "./lastItemsReducer";
+import SimilarItemsReducer from "./similarItemsReducer";
+import MostPopularItemsReducer from "./mostPopularItemsReducer";
 
 const rootReducer = combineReducers({
   items: ItemsReducer,
@@ -23,6 +29,12 @@ const rootReducer = combineReducers({
   myItems: MyItemsReducer,
   onBiddedItems: OnBiddedItemsReducer,
   updateItem: UpdateItemReducer,
+  buyItem: BuyItemReducer,
+  expiredItem: ExpiredItemsReducer,
+  wonItems: WonItemsReducer,
+  lastItems: LastItemsReducer,
+  similarItems: SimilarItemsReducer,
+  mostPopularItems: MostPopularItemsReducer,
 });
 
 export default rootReducer;

@@ -9,6 +9,7 @@ import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import { MenuItem } from "@material-ui/core";
 import { Container, Form, Row, InputGroup, Col } from "react-bootstrap";
+import { FaSave } from "react-icons/fa";
 
 const DialogBoxUpdate = ({
   prodName,
@@ -37,58 +38,9 @@ const DialogBoxUpdate = ({
   return (
     <div>
       <Dialog open={open} onClose={handleClose} fullWidth onSubmit={onSubmit}>
-        <DialogTitle>Edit Item</DialogTitle>
+        <DialogTitle className="updateDialogTitle">Edit Item</DialogTitle>
         <DialogContent>
-          {/* <DialogContentText>{prodName}</DialogContentText>
-          <h3>{description}</h3>
-          <img src={image} alt=""></img>
-          <TextField
-            style={{ margin: 5 }}
-            id="standard-required"
-            label="Product Name"
-            defaultValue={prodName}
-          />
-          <TextField
-            style={{ margin: 5 }}
-            id="standard-required"
-            select
-            label="Category"
-            defaultValue={"category"}
-          />
-          <MenuItem>dsd</MenuItem>
-          <TextField
-            style={{ margin: 5 }}
-            fullWidth
-            id="standard-required"
-            label="Description"
-            defaultValue={description}
-          />
-          <TextField
-            style={{ margin: 5 }}
-            id="standard-required"
-            label="Condition"
-            defaultValue={"condition"}
-          />
-          <TextField
-            style={{ margin: 5 }}
-            id="standard-required"
-            label="Start price"
-            defaultValue={"startprice"}
-          />
-          <TextField
-            style={{ margin: 5 }}
-            id="standard-required"
-            label="Buy now price"
-            defaultValue={"buynowprice"}
-          />
-          <TextField
-            style={{ margin: 5 }}
-            id="standard-required"
-            label="Time"
-            defaultValue={"secondsleft"}
-          /> */}
           <Form noValidate>
-            {/* {console.log("nume:", name, "cat:", category, "cond", condition)} */}
             <Row className="mb-3">
               <Form.Group as={Col} md="5" controlId="validationCustom01">
                 <Form.Label>Product Name</Form.Label>
@@ -159,12 +111,13 @@ const DialogBoxUpdate = ({
               </Form.Group>
             </Row>
             <Row>
-              <Form.Group as={Col} md="3" controlId="validationCustom05">
+              <Form.Group as={Col} md="5" controlId="validationCustom05">
                 <Form.Label>Start Price ($)</Form.Label>
                 <Form.Control
                   required
                   type="number"
-                  placeholder="0"
+                  min="1"
+                  placeholder="1"
                   defaultValue={startprice}
                   onChange={(e) => setStartPrice(e.target.value)}
                 />
@@ -172,12 +125,13 @@ const DialogBoxUpdate = ({
                   Please provide the start price.
                 </Form.Control.Feedback>
               </Form.Group>
-              <Form.Group as={Col} md="4" controlId="validationCustom06">
+              <Form.Group as={Col} md="5" controlId="validationCustom06">
                 <Form.Label>Buy Now Price ($)</Form.Label>
                 <Form.Control
                   required
                   type="number"
-                  placeholder="0"
+                  min="1"
+                  placeholder="1"
                   defaultValue={buynowprice}
                   onChange={(e) => setBuyNowPrice(e.target.value)}
                 />
@@ -185,21 +139,13 @@ const DialogBoxUpdate = ({
                   Please provide the buy now price.
                 </Form.Control.Feedback>
               </Form.Group>
-              <Form.Group as={Col} md="3" controlId="validationCustom07">
-                <Form.Label>Bid Duration (s)</Form.Label>
-                <Form.Control
-                  required
-                  type="number"
-                  placeholder="0"
-                  defaultValue={bidduration}
-                  onChange={(e) => setBidDuration(e.target.value)}
-                />
-                <Form.Control.Feedback type="invalid">
-                  Please provide the time in seconds.
-                </Form.Control.Feedback>
-              </Form.Group>
             </Row>
-            <Button type="submit">Submit form</Button>
+            <Button type="submit" className="btnEditSubmit btn-1">
+              <span class="btn-label">
+                <FaSave className="btn-sep"></FaSave>
+              </span>
+              Submit form
+            </Button>
           </Form>
         </DialogContent>
         <DialogActions>

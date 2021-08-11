@@ -3,9 +3,27 @@ import Search from "./Search";
 import "../../styles/Filter.css";
 import Slider from "@material-ui/core/Slider";
 
-const Filter = ({ items }) => {
+const Filter = ({ items, fetchExpired }) => {
   const [filterParamStartpriceMin, setPararmStartpriceMin] = useState(1);
   const [filterParamStartpriceMax, setPararmStartpriceMax] = useState(5000);
+  const marks = [
+    {
+      value: 1,
+      label: "1$",
+    },
+    {
+      value: 500,
+      label: "500$",
+    },
+    {
+      value: 1000,
+      label: "1000$",
+    },
+    {
+      value: 1500,
+      label: "1500$",
+    },
+  ];
   const [filterListCategory] = useState([
     {
       id: 11,
@@ -157,103 +175,132 @@ const Filter = ({ items }) => {
     "<MINN"
   );
   return (
-    <div>
-      {/* <div>
-        Category Pick
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="inlineCheckbox1"
-            value="Electronics"
-          />
-          <label class="form-check-label" for="inlineCheckbox1">
-            Electronics
-          </label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="inlineCheckbox2"
-            value="Fashion"
-          />
-          <label class="form-check-label" for="inlineCheckbox2">
-            Fashion
-          </label>
+    <div className="auctionPage">
+      <div className="filterDiv">
+        {console.log(filterListCategory, "FILLLLTER")}
+        <form>
+          <div className="cd-filter-block">
+            <div className="accordion-item filtercolapse">
+              <h2 className="accordion-header" id="flush-headingOne">
+                <button
+                  className="accordion-button collapsed dorpdownfilter"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseOne"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseOne"
+                >
+                  Category
+                </button>
+              </h2>
+              <div
+                id="flush-collapseOne"
+                className="accordion-collapse collapse "
+                aria-labelledby="flush-headingOne"
+                data-bs-parent="#accordionFlushExample"
+              >
+                <ul class="cd-filter-content cd-filter list">
+                  {filterListCategory.map((filter) => (
+                    <li>
+                      <React.Fragment>
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id={filter.id}
+                          onClick={() => onFilterChangeCategory(filter.value)}
+                        />
+                        <label>{filter.name}</label>
+                      </React.Fragment>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </form>
+        <form>
+          <div className="cd-filter-block">
+            <div className="accordion-item filtercolapse">
+              <h2 className="accordion-header" id="flush-headingTwo">
+                <button
+                  className="accordion-button collapsed dorpdownfilter"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseTwo"
+                >
+                  Condition
+                </button>
+              </h2>
+              <div
+                id="flush-collapseTwo"
+                className="accordion-collapse collapse "
+                aria-labelledby="flush-headingTwo"
+                data-bs-parent="#accordionFlushExample"
+              >
+                <ul class="cd-filter-content cd-filter list">
+                  {filterListCondition.map((filter) => (
+                    <li>
+                      <React.Fragment>
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id={filter.id}
+                          onClick={() => onFilterChangeCondition(filter.value)}
+                        />
+                        <label>{filter.name}</label>
+                      </React.Fragment>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div className="accordion-item filtercolapse ">
+          <h2
+            className="accordion-header dorpdownfilter"
+            id="flush-headingFour"
+          >
+            <button
+              className="accordion-button collapsed  dorpdownfilter"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseFour"
+              aria-expanded="false"
+              aria-controls="flush-collapseFour"
+            >
+              Price Range
+            </button>
+          </h2>
+          <div
+            id="flush-collapseFour"
+            className="accordion-collapse collapse "
+            aria-labelledby="flush-headingFour"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div
+              style={{
+                margin: "auto",
+                display: "block",
+                width: "90%",
+                marginTop: "30px",
+              }}
+            >
+              <Slider
+                min={1}
+                max={1500}
+                value={value}
+                onChange={rangeSelector}
+                valueLabelDisplay="auto"
+                marks={marks}
+              />
+            </div>
+          </div>
         </div>
       </div>
-      <div>
-        Condition Pick
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="inlineCheckbox1"
-            value="New"
-          />
-          <label class="form-check-label" for="inlineCheckbox1">
-            New
-          </label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="inlineCheckbox2"
-            value="Used"
-            onClick={()=>onFilterChangeCondition(this.value)}
-          />
-          <label class="form-check-label" for="inlineCheckbox2">
-            Used
-          </label>
-        </div>
-      </div> */}
-      <div
-        style={{
-          margin: "auto",
-          display: "block",
-          width: "330px",
-          marginTop: "50px",
-        }}
-      >
-        Price Range
-        <Slider
-          min={1}
-          max={1500}
-          value={value}
-          onChange={rangeSelector}
-          valueLabelDisplay="auto"
-        />
-      </div>
-      {console.log(filterListCategory, "FILLLLTER")}
-      <form>
-        {filterListCategory.map((filter) => (
-          <React.Fragment>
-            <label>{filter.name}</label>
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id={filter.id}
-              onClick={() => onFilterChangeCategory(filter.value)}
-            />
-          </React.Fragment>
-        ))}
-      </form>
-      <form>
-        {filterListCondition.map((filter) => (
-          <React.Fragment>
-            <label>{filter.name}</label>
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id={filter.id}
-              onClick={() => onFilterChangeCondition(filter.value)}
-            />
-          </React.Fragment>
-        ))}
-      </form>
-      <Search items={UniquefilteredList}></Search>
+      <Search items={UniquefilteredList} fetchExpired={fetchExpired}></Search>
     </div>
   );
 };

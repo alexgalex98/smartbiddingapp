@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { fetchBid, loadBid } from "../../actions/bidActions";
 import { fetchBidders, loadBidders } from "../../actions/getBiddersAction";
-import { bidForItemRequest } from "../../actions/bidForItemActions";
+import {
+  bidForItemRequest,
+  buyItemRequest,
+} from "../../actions/bidForItemActions";
+import { fetchSimilarItems } from "../../actions/homePageActions";
 import Bid from "./Bid";
-import MyCountdown from "../itemsPage/MyCountdown";
-import { Link } from "@material-ui/core";
 import NavBar from "../Navbar";
+import SimilarCardList from "./similarCardList";
 
 function BidPageSmart({
   bidData,
@@ -18,6 +21,9 @@ function BidPageSmart({
   loadBid,
   match,
   loadBidders,
+  buyItemRequest,
+  fetchSimilarItems,
+  similarItems,
 }) {
   const [price, setPrice] = useState();
 
@@ -30,16 +36,26 @@ function BidPageSmart({
     console.log("fjffjj", newbid);
     let currentItem = match.params.id;
     let currentUser = localStorage.getItem("user");
-    bidForItemRequest(price, currentItem, currentUser);
+    if (price > bidData.bid.currentprice) {
+      bidForItemRequest(price, currentItem, currentUser);
+      window.location.replace(`${bidData.bid.id}`);
+    }
     console.log(price);
     newbid.price = price;
     console.log("fjffjj", newbid);
     fetchBidders();
-    window.location.replace(`${bidData.bid.id}`);
+  };
+
+  const onBuySubmit = async () => {
+    let currentItem = match.params.id;
+    let currentUser = localStorage.getItem("user");
+    buyItemRequest(currentItem, currentUser);
+    console.log("ONBUYSUBMIT");
   };
   //console.log("BAUUUUSE",match.params.id)
   useEffect(() => {
     //fetchBid()
+    fetchSimilarItems(match.params.id);
     console.log(match.params.id, "aiiiic");
     loadBid(match.params.id);
     loadBidders(match.params.id);
@@ -63,10 +79,14 @@ function BidPageSmart({
             bid={bidData.bid}
             onPriceChange={onPriceChange}
             onBidSubmit={onBidSubmit}
+            onBuySubmit={onBuySubmit}
             bidders={biddersData}
             secondsleft={bidData.bid.secondsleft}
           ></Bid>
         }
+      </div>
+      <div>
+        <SimilarCardList items={similarItems.similarItems}></SimilarCardList>
       </div>
     </div>
   );
@@ -78,6 +98,8 @@ const mapStateToProps = (state) => {
     bidData: state.bid,
     biddersData: state.getBidders.bidders,
     newbid: state.bidForItem,
+    buyItem: state.buyItem,
+    similarItems: state.similarItems,
   };
 };
 
@@ -89,6 +111,9 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(bidForItemRequest(price, currentItem, currentUser)),
     loadBid: (id) => dispatch(loadBid(id)),
     loadBidders: (id) => dispatch(loadBidders(id)),
+    buyItemRequest: (currentItem, currentUser) =>
+      dispatch(buyItemRequest(currentItem, currentUser)),
+    fetchSimilarItems: (id) => dispatch(fetchSimilarItems(id)),
   };
 };
 

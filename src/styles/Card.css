@@ -99,6 +99,10 @@
 
 .cardlist {
   margin: 0%;
+  margin-top: 10%;
+  display: inline !important;
+  /* float: left; */
+  overflow: hidden;
 }
 
 .row {
@@ -137,4 +141,28 @@
 .title {
   font-size: 20px;
   color: black;
+}
+
+.btnEdit {
+  background-color: #f4946c !important;
+  border-color: #f4946c !important;
+  /* margin-top: 5%; */
+  color: white !important ;
+}
+
+.btnEdit:hover {
+  background: #d4815d !important;
+}
+
+.mycardlist {
+  margin: 0%;
+  margin-top: 5%;
+
+  overflow: hidden;
+}
+
+.mycardtitle {
+  margin-left: 0px !important;
+  font-weight: 500 !important;
+  font-family: "Fira Sans", sans-serif !important;
 }

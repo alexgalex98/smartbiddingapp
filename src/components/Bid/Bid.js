@@ -113,7 +113,7 @@
 import "../../styles/Bid.css";
 import BiddersList from "./BiddersList";
 
-const Bid = ({ bid, onPriceChange, onBidSubmit, bidders }) => {
+const Bid = ({ bid, onPriceChange, onBidSubmit, bidders, onBuySubmit }) => {
   return (
     <div>
       <div className="details">
@@ -137,7 +137,7 @@ const Bid = ({ bid, onPriceChange, onBidSubmit, bidders }) => {
                 <th className="detailrow">
                   <strong className="textPrice"> Bid Start Price </strong>
                 </th>
-                <td className="detailrow startprice">${bid.startprice}</td>
+                <td className="detailrow startprice">${bid.currentprice}</td>
               </tr>
               <tr>
                 <th className="pl-0 w-25 detailrow" scope="row">
@@ -151,17 +151,27 @@ const Bid = ({ bid, onPriceChange, onBidSubmit, bidders }) => {
                 </th>
                 <td className="detailrow">{bid.description}</td>
               </tr>
+              <tr>
+                <th>{bid.category}</th>
+              </tr>
             </table>
           </div>
 
           <div className="input-group">
             <span className="input-group-addon">$</span>
-            <input
-              type="number"
-              className="bidInput"
-              min="0"
-              onChange={(e) => onPriceChange(e.target.value)}
-            ></input>
+            <form>
+              <input
+                type="number"
+                className="bidInput"
+                min={bid.currentprice + 1}
+                placeholder={`min ${bid.currentprice}$`}
+                onChange={(e) => {
+                  if (e.target.value >= bid.currentprice + 1) {
+                    onPriceChange(e.target.value);
+                  }
+                }}
+              ></input>
+            </form>
             <input
               className="placeBid"
               onClick={onBidSubmit}
@@ -169,8 +179,12 @@ const Bid = ({ bid, onPriceChange, onBidSubmit, bidders }) => {
               value=" Place Bid"
             ></input>
           </div>
-
-          <button className="buy">Buy Now</button>
+          <input
+            className="placeBid"
+            onClick={onBuySubmit}
+            type="submit"
+            value="Buy Now"
+          ></input>
         </div>
       </div>
       {console.log(bidders, ": bidderswS")}

@@ -12,7 +12,8 @@ export const NewBidAPI = (
   created_by
 ) => {
   //console.log("insertin", name, category);
-  console.log("images path", image, category);
+  console.log("images path", image, category, bidDuration);
+  console.log("<MS");
   return fetch("http://localhost:3000/newBid", {
     method: "post",
     headers: { "Content-Type": "application/json" },

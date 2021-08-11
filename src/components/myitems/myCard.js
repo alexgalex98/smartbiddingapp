@@ -5,6 +5,8 @@ import "../../styles/Card.css";
 import { Link } from "react-router-dom";
 import DialogBoxUpdateSmart from "./DialogBoxUpdateSmart";
 import Button from "@material-ui/core/Button";
+import { FaEdit } from "react-icons/fa";
+import "../../styles/DialogEdit.css";
 
 const MyCard = ({
   id,
@@ -16,6 +18,7 @@ const MyCard = ({
   buyNowPrice,
   description,
   secondsLeft,
+  currentPrice,
 }) => {
   console.log(
     id,
@@ -51,11 +54,13 @@ const MyCard = ({
         <img src={image} alt="image1" className="card-img-top" />
       </div>
       <div className="card-body text-dark div">
-        <p className="card-title overflow-ellipsis title">{prodName}</p>
+        <p className="card-title overflow-ellipsis mycardtitle title">
+          {prodName}
+        </p>
         <div className="wrapper">
           <div className="bid">
             <p className="overflow-ellipsis">CURRENT BID</p>
-            <p className="overflow-ellipsis price">$11</p>
+            <p className="overflow-ellipsis price">${currentPrice}</p>
           </div>
           <div className="time">
             <p className="overflow-ellipsis">TIME REMAINING</p>
@@ -65,15 +70,16 @@ const MyCard = ({
           </div>
         </div>
       </div>
-      <div className="parentbtn">
-        <Link
-          to={`/items/${id}`}
-          className="btn btn-outline-success btnDiv bidbtn"
-        >
-          Go to bid
+      <div className="parentbtnUpdate flex-parent jc-center">
+        <Link to={`/items/${id}`} className="btn margin-right">
+          More Details
         </Link>
-        <Button variant="outlined" color="primary" onClick={handleClickToOpen}>
-          Options
+        <Button
+          variant="outlined"
+          className="btnEdit"
+          onClick={handleClickToOpen}
+        >
+          <FaEdit></FaEdit>
         </Button>
         {open ? (
           <DialogBoxUpdateSmart

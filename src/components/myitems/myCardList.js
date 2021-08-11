@@ -6,7 +6,7 @@ const MyCardList = ({ items }) => {
   return (
     <div>
       {
-        <Container className="cardlist">
+        <Container className="mycardlist">
           <Row>
             {items.map((item) => {
               return (
@@ -21,6 +21,7 @@ const MyCardList = ({ items }) => {
                     condition={item.condition_}
                     image={item.image}
                     secondsLeft={item.secondsleft}
+                    currentPrice={item.currentprice}
                   />
                 </Col>
               );

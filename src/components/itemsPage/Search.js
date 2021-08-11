@@ -2,8 +2,11 @@ import { ReactReduxContext } from "react-redux";
 import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Card from "./Card";
+import { FaSearch } from "react-icons/fa";
+import "../../styles/Search.css";
+import { FaArrowUp } from "react-icons/fa";
 
-const Search = ({ items }) => {
+const Search = ({ items, fetchExpired }) => {
   const [q, setQ] = useState("");
   const [searchParam] = useState(["prodname", "category"]);
   const [filterParamCategory, setFilterParamCategory] = useState(["All"]);
@@ -12,10 +15,6 @@ const Search = ({ items }) => {
   function searchItems(items) {
     console.log(filterParamCondition, "CONDD");
     return items.filter((item) => {
-      //console.log(item.condition_, "BBBBBB");
-      // in here we check if our region is equal to our c state
-      // if it's equal to then only return the items that match
-      // if not return All the countries
       if (item.category == filterParamCategory) {
         return searchParam.some((newItem) => {
           return (
@@ -23,7 +22,6 @@ const Search = ({ items }) => {
           );
         });
       } else if (item.condition_ == filterParamCondition) {
-        // console.log("POTRIVIT");
         return searchParam.some((newItem) => {
           return (
             item[newItem].toString().toLowerCase().indexOf(q.toLowerCase()) > -1
@@ -40,54 +38,38 @@ const Search = ({ items }) => {
   }
   return (
     <div>
-      {/* <div>
-        <select
-          onChange={(e) => {
-            setFilterParamCategory(e.target.value);
-          }}
-          className="custom-select"
-          aria-label="Filter Countries By Category"
-        >
-          <option value="All">All</option>
-          <option value="Electronics">Electronics</option>
-          <option value="Fashion">Fashion</option>
-          <option value="Sports">Sports</option>
-          <option value="Health & Beauty">Health & Beauty</option>
-          <option value="Toys">Toys</option>
-          <option value="Home & Garden">Home & Garden</option>
-        </select>
-        <span className="focus"></span>
-        <select
-          onChange={(e) => {
-            setFilterParamCondition(e.target.value);
-          }}
-          className="custom-select"
-          aria-label="Filter Countries By Condition"
-        >
-          <option value="All">All</option>
-          <option value="New">New</option>
-          <option value="Used">Used</option>
-        </select>
-        <span className="focus"></span>
-      </div> */}
       <div className="search-wrapper">
-        <label htmlFor="search-form">
-          <input
-            type="search"
-            name="search-form"
-            id="search-form"
-            className="search-input"
-            placeholder="Search for..."
-            value={q}
-            /*
-                            // set the value of our useState q
-                            //  anytime the user types in the search box
-                            */
-            onChange={(e) => setQ(e.target.value)}
-          />
-          <span className="sr-only">Search countries here</span>
-        </label>
+        <div class="p-1 bg-light rounded rounded-pill shadow-sm searchForm">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <button
+                id="button-addon2"
+                type="submit"
+                class="btn btn-link text-warning"
+              >
+                <FaSearch className="searchIcon"></FaSearch>
+              </button>
+
+              <label htmlFor="search-form">
+                <input
+                  type="search"
+                  name="search-form"
+                  id="search-form"
+                  //className="search-input"
+                  placeholder="Search for..."
+                  aria-describedby="button-addon2"
+                  className="form-control border-0 bg-light searchInput"
+                  value={q}
+                  onChange={(e) => setQ(e.target.value)}
+                />
+
+                <span className="sr-only">Search countries here</span>
+              </label>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div>
         {
           <Container className="cardlist">
@@ -96,6 +78,7 @@ const Search = ({ items }) => {
                 return (
                   <Col className="col-md-6 col-lg-3 col-xs-12">
                     <Card
+                      fetchExpired={fetchExpired}
                       id={item.id}
                       prodName={item.prodname}
                       startPrice={item.startprice}
@@ -105,6 +88,7 @@ const Search = ({ items }) => {
                       condition={item.condition_}
                       image={item.image}
                       secondsLeft={item.secondsleft}
+                      currentPrice={item.currentprice}
                     />
                   </Col>
                 );
@@ -113,6 +97,11 @@ const Search = ({ items }) => {
           </Container>
         }
       </div>
+      <a href="#top">
+        <button id="myBtn" title="Go to top">
+          <FaArrowUp></FaArrowUp>
+        </button>
+      </a>
     </div>
   );
 };

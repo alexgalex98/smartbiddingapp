@@ -9,7 +9,9 @@ import { put, takeLatest, call } from "redux-saga/effects";
 function* fetchOnBiddedItems() {
   console.log("SAGAMY");
   try {
-    const response = yield call(() => fetchOnBiddedItemsAPI(16));
+    const response = yield call(() =>
+      fetchOnBiddedItemsAPI(localStorage.getItem("user"))
+    );
     yield put(fetchItemsSuccess(response));
     console.log("SAGA", response);
   } catch (error) {

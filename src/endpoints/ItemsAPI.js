@@ -10,3 +10,14 @@ export function fetchItemsAPI() {
       return data;
     });
 }
+
+export function fetchExpiredAPI(id) {
+  console.log(id, "IDIDIDIDIDIAPPPPPPIII");
+  return fetch(`http://localhost:3000/onTimeExpired/${id}`, {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+  }).then((data) => {
+    console.log("EXPIREDAPI", data);
+    return data;
+  });
+}

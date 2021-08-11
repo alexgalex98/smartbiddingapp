@@ -2,6 +2,12 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Container, Form, Row, InputGroup, Col, Button } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
+import TextField from "@material-ui/core/TextField";
+import DateTimePicker from "@material-ui/lab/DateTimePicker";
+import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
+import LocalizationProvider from "@material-ui/lab/LocalizationProvider";
+import "../../styles/NewBid.css";
+import { FaSave } from "react-icons/fa";
 
 const NewBid = ({
   name,
@@ -21,12 +27,18 @@ const NewBid = ({
   onBidDurationChange,
   onImageChange,
   onSubmit,
+  dateChange,
+  setDateChange,
 }) => {
   const [validated, setValidated] = useState(false);
   const [file, setFile] = useState();
   const [filename, setFilename] = useState("Choose File");
   const [uploadedFile, setUploadedFile] = useState({});
   const [path, sethPath] = useState("testImage");
+
+  const onChangeDate = () => {
+    console.log(dateChange);
+  };
 
   const onSubmitImage = async (e) => {
     // e.preventDefault();
@@ -53,11 +65,17 @@ const NewBid = ({
     //handleSubmit();
   };
 
+  const [value, onChangeValue] = useState(new Date());
+  const [currentDate] = useState(new Date());
+
+  console.log(currentDate, "NOW", dateChange, "CHANGE");
+
   const onChange = (e) => {
     setFile(e.target.files[0]);
     setFilename(e.target.files[0].name);
     onImageChange(`images/${e.target.files[0].name}`);
   };
+  let time = 0;
 
   const handleSubmit = (event) => {
     console.log("1");
@@ -66,14 +84,24 @@ const NewBid = ({
     formData.append("file", file);
     console.log(filename);
     // onImageChange("path");
+    time = Math.round((dateChange.getTime() - currentDate.getTime()) / 1000);
+
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
       console.log(filename);
+      console.log(
+        "DIFFERENCE=",
+        (dateChange.getTime() - currentDate.getTime()) / 1000
+      );
+      console.log(
+        Math.round((dateChange.getTime() - currentDate.getTime()) / 1000)
+      );
     } else {
       try {
         onSubmitImage();
         console.log("2");
+
         onSubmit();
       } catch {
         console.log("err");
@@ -86,7 +114,7 @@ const NewBid = ({
     <Container>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         {/* {console.log("nume:", name, "cat:", category, "cond", condition)} */}
-        <Row className="mb-3">
+        <Row className="mb-3 firstRow">
           <Form.Group as={Col} md="4" controlId="validationCustom01">
             <Form.Label>Product Name</Form.Label>
             <Form.Control
@@ -136,7 +164,7 @@ const NewBid = ({
           </Form.Group>
         </Row>
         <Row className="mb-3">
-          <Form.Group as={Col} md="3" controlId="validationCustom04">
+          <Form.Group as={Col} md="2" controlId="validationCustom04">
             <Form.Label>Condition</Form.Label>
             <select
               class="custom-select"
@@ -155,6 +183,7 @@ const NewBid = ({
           <Form.Group as={Col} md="2" controlId="validationCustom05">
             <Form.Label>Start Price ($)</Form.Label>
             <Form.Control
+              min="1"
               required
               type="number"
               placeholder="0"
@@ -167,6 +196,7 @@ const NewBid = ({
           <Form.Group as={Col} md="2" controlId="validationCustom06">
             <Form.Label>Buy Now Price ($)</Form.Label>
             <Form.Control
+              min="2"
               required
               type="number"
               placeholder="0"
@@ -176,7 +206,7 @@ const NewBid = ({
               Please provide the buy now price.
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group as={Col} md="2" controlId="validationCustom07">
+          {/* <Form.Group as={Col} md="2" controlId="validationCustom07">
             <Form.Label>Bid Duration (s)</Form.Label>
             <Form.Control
               required
@@ -187,6 +217,37 @@ const NewBid = ({
             <Form.Control.Feedback type="invalid">
               Please provide the time in seconds.
             </Form.Control.Feedback>
+          </Form.Group> */}
+
+          <Form.Group as={Col} md="3">
+            <Form.Label className="pickTimeText">Pick Time</Form.Label>
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DateTimePicker
+                className="formDatePicker"
+                renderInput={(props) => <TextField {...props} />}
+                //label="Pick Date & Time"
+                value={dateChange}
+                minDateTime={new Date()}
+                onChange={(newValue) => {
+                  setDateChange(newValue);
+                  onChangeDate();
+                  // console.log(dateChange, "DATECHANGE");
+                  // console.log(
+                  //   Math.round(
+                  //     (dateChange.getTime() - currentDate.getTime()) / 1000
+                  //   )
+                  // );
+                  // onBidDurationChange(
+                  //   (dateChange.getTime() - currentDate.getTime()) / 1000
+                  // );
+                  // console.log(
+                  //   dateChange.getTime() - currentDate.getTime() / 1000,
+                  //   "IN ONCHANE"
+                  // );
+                  // console.log(dateChange, currentDate, "bllblbll");
+                }}
+              />
+            </LocalizationProvider>
           </Form.Group>
           <Form.Group as={Col} md="3" controlId="validationCustom07">
             <Form.Label>Image</Form.Label>
@@ -204,7 +265,12 @@ const NewBid = ({
             </div>
           </Form.Group>
         </Row>
-        <Button type="submit">Submit form</Button>
+        <Button type="submit" className="btnAdd btn-1  icon-info">
+          <span class="btn-label">
+            <FaSave className="btn-sep"></FaSave>
+          </span>
+          Submit form
+        </Button>
       </Form>
     </Container>
   );

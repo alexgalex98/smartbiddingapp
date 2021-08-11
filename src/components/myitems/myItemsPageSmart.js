@@ -12,7 +12,7 @@ function MyItemsPageSmart({ myItems, fetchItems }) {
   console.log(myItems, "IREE");
   for (let i = 0; i < myItems.myItems.length; i++) {
     console.log("FOR");
-    if (myItems.myItems[i].status === "approved") {
+    if (myItems.myItems[i].status === "pending") {
       approved.push(myItems.myItems[i]);
     }
   }

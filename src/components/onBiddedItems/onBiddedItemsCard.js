@@ -14,6 +14,7 @@ const OnBiddedItemsCard = ({
   buyNowPrice,
   description,
   secondsLeft,
+  currentPrice,
 }) => {
   return (
     <div className="card">
@@ -21,11 +22,13 @@ const OnBiddedItemsCard = ({
         <img src={image} alt="image1" className="card-img-top" />
       </div>
       <div className="card-body text-dark div">
-        <p className="card-title overflow-ellipsis title">{prodName}</p>
+        <p className="card-title overflow-ellipsis title mycardtitle">
+          {prodName}
+        </p>
         <div className="wrapper">
           <div className="bid">
             <p className="overflow-ellipsis">CURRENT BID</p>
-            <p className="overflow-ellipsis price">$11</p>
+            <p className="overflow-ellipsis price">${currentPrice}</p>
           </div>
           <div className="time">
             <p className="overflow-ellipsis">TIME REMAINING</p>

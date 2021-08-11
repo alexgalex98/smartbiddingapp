@@ -63,8 +63,8 @@ const NavBar = () => {
               </Link>
             </Nav.Link>
             <Nav.Link href="#6">
-              <Link className="navlink" to="/updateBid">
-                Update
+              <Link className="navlink" to="/wonItems">
+                Won Items
               </Link>
             </Nav.Link>
           </Nav>

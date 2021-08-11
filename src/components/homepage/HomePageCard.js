@@ -12,13 +12,14 @@ const HomePageCard = ({
   buyNowPrice,
   description,
   secondsLeft,
+  currentPrice,
 }) => {
   console.log(image);
   return (
     <div className="product-wrap-10 mb-25">
       <div className="product-img">
-        <a href>
-          <img src="/images/bike.jpg"></img>
+        <a href={`/items/${id}`}>
+          <img src={image}></img>
         </a>
         <div className="product-img-badges">
           <span>New</span>
@@ -32,11 +33,11 @@ const HomePageCard = ({
       <div className="product-content-2">
         <div className="title-price-wrap-2">
           <h3>
-            <a>Lorem ipsum chair one</a>
+            <a>{prodName}</a>
           </h3>
 
           <div className="price-2">
-            <span>$15.6</span>
+            <span>{currentPrice}$</span>
           </div>
         </div>
       </div>

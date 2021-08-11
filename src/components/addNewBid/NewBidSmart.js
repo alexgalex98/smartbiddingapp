@@ -18,6 +18,7 @@ function NewBidSmart({ newBidData, newBidReq, success, isSuccess }) {
   const [buyNowPrice, setBuyNowPrice] = useState(1000);
   const [bidDuration, setBidDuration] = useState(1000);
   const [image, setImage] = useState("hh");
+  const [dateChange, setDateChange] = useState(new Date());
   const created_by = localStorage.getItem("user");
   const history = useHistory();
 
@@ -52,6 +53,18 @@ function NewBidSmart({ newBidData, newBidReq, success, isSuccess }) {
   };
 
   const onSubmit = async () => {
+    console.log("TIMPSMART", dateChange);
+
+    setBidDuration(
+      Math.round((dateChange.getTime() - new Date().getTime()) / 1000)
+    );
+    console.log(
+      Math.round((dateChange.getTime() - new Date().getTime()) / 1000)
+    );
+    console.log(bidDuration);
+    const timeStamp = Math.round(
+      (dateChange.getTime() - new Date().getTime()) / 1000
+    );
     newBidReq(
       name,
       category,
@@ -59,7 +72,7 @@ function NewBidSmart({ newBidData, newBidReq, success, isSuccess }) {
       condition,
       startPrice,
       buyNowPrice,
-      bidDuration,
+      timeStamp,
       image,
       created_by
     );
@@ -68,10 +81,10 @@ function NewBidSmart({ newBidData, newBidReq, success, isSuccess }) {
     }
   };
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && name !== "goOnBaby") {
       console.log("SUCEEESSS");
       history.push("/items");
-      // console.log('SUCEEESSS')
+      console.log("SUCEEESSS");
     }
   }, [isSuccess]);
 
@@ -95,6 +108,8 @@ function NewBidSmart({ newBidData, newBidReq, success, isSuccess }) {
       onBidDurationChange={onBidDurationChange}
       onImageChange={onImageChange}
       onSubmit={onSubmit}
+      setDateChange={setDateChange}
+      dateChange={dateChange}
     ></NewBid>
   );
 }

@@ -6,7 +6,7 @@ const OnBiddedItemsCardList = ({ items }) => {
   return (
     <div>
       {
-        <Container className="cardlist">
+        <Container className="mycardlist">
           <Row>
             {items.map((item) => {
               return (
@@ -21,6 +21,7 @@ const OnBiddedItemsCardList = ({ items }) => {
                     condition={item.condition}
                     image={item.image}
                     secondsLeft={item.secondsleft}
+                    currentPrice={item.currentprice}
                   />
                 </Col>
               );
