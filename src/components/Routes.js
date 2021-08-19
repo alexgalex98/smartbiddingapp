@@ -18,17 +18,9 @@ import OnBiddedItemsPageSmart from "./onBiddedItems/onBiddedItemsPageSmart";
 import UpdateBid from "./UpdateBid/UpdateBId";
 import UpdatePageSmart from "./UpdateBid/UpdatePageSmart";
 import WonItemsPageSmart from "./wonItems/wonItemsPageSmart";
+import ProtectedRoute from "./ProtectedRoute";
+import ProtectedRouteAdmin from "./ProtectedRouteAdmin";
 export default function Routes() {
-  // const [activeIndex, setActiveIndex] = React.useState('home');
-  // const [t] = useTranslation();
-  // const [user, setUser]= useState(false);
-  // if(localStorage.getItem("user")) {
-  //   setUser(true)
-  // }
-  // const handleOnClick = (index) => {
-  //   setActiveIndex(index);
-  // };
-
   return (
     <Router>
       <div>
@@ -39,22 +31,21 @@ export default function Routes() {
           <Route exact path="/signout">
             {<Signout></Signout>}
           </Route>
-          <Route exact path="/items">
-            {
-              <div>
-                <NavBar></NavBar>
-                <ItemsPageSmart></ItemsPageSmart>
-              </div>
-            }
-          </Route>
-          <Route exact path="/home">
-            {
-              <div>
-                <NavBar></NavBar>
-                <HomePage />
-              </div>
-            }
-          </Route>
+
+          <ProtectedRoute
+            exact
+            path="/items"
+            component={(props) => [
+              <NavBar></NavBar>,
+              <ItemsPageSmart></ItemsPageSmart>,
+            ]}
+          />
+
+          <ProtectedRoute
+            exact
+            path="/home"
+            component={(props) => [<NavBar></NavBar>, <HomePage />]}
+          ></ProtectedRoute>
           <Route exact path="/register">
             {
               <div>
@@ -62,63 +53,45 @@ export default function Routes() {
               </div>
             }
           </Route>
-          <Route exact path="/addBid">
-            {
-              <div>
-                <NavBar></NavBar>
-                <NewBidSmart></NewBidSmart>
-              </div>
-            }
-          </Route>
-          <Route
+
+          <ProtectedRoute
+            exact
+            path="/addBid"
+            component={(props) => [<NavBar></NavBar>, <NewBidSmart />]}
+          ></ProtectedRoute>
+
+          <ProtectedRoute
             exact
             path="/items/:id"
             component={(props) => <BidPageSmart match={props.match} />}
+          ></ProtectedRoute>
+
+          <ProtectedRouteAdmin
+            exact
+            path="/adminPage"
+            component={(props) => <AdminPageSmart></AdminPageSmart>}
+          ></ProtectedRouteAdmin>
+
+          <ProtectedRoute
+            exact
+            path="/myItems"
+            component={(props) => [<NavBar></NavBar>, <MyItemsPageSmart />]}
+          ></ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/onBiddedItems"
+            component={(props) => [
+              <NavBar></NavBar>,
+              <OnBiddedItemsPageSmart></OnBiddedItemsPageSmart>,
+            ]}
+          ></ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/wonItems"
+            component={(props) => [<NavBar />, <WonItemsPageSmart />]}
           />
-          <Route exact path="/upload">
-            <div className="container mt-4">
-              <h4 className="display-4 text-center mb-4">File Upload</h4>
-              <FileUpload />
-            </div>
-          </Route>
-          <Route exact path="/addForm">
-            <FormExample></FormExample>
-          </Route>
-          <Route exact path="/adminPage">
-            <AdminPageSmart></AdminPageSmart>
-          </Route>
-          <Route exact path="/myItems">
-            <NavBar></NavBar>
-            <MyItemsPageSmart></MyItemsPageSmart>
-          </Route>
-          <Route exact path="/updateBid/">
-            <NavBar></NavBar>
-            <UpdatePageSmart></UpdatePageSmart>
-          </Route>
-          <Route exact path="/onBiddedItems">
-            <NavBar></NavBar>
-            <OnBiddedItemsPageSmart></OnBiddedItemsPageSmart>
-          </Route>
-          <Route exact path="/wonItems">
-            <NavBar></NavBar>
-            <WonItemsPageSmart></WonItemsPageSmart>
-          </Route>
-
-          {/* {<div>Hello <BidPageSmart></BidPageSmart></div>}
-            </Route> */}
-
-          {/* <Route exact path="/items">
-              {<ItemsPageSmart></ItemsPageSmart>}
-            </Route>
-            <Route exact path="/home">
-              {<HomePage />}
-            </Route>
-            <Route exact path="/register">
-              {<RegisterSmart></RegisterSmart>}
-            </Route>
-            <Route exact path='/addBid'>
-              {<NewBidSmart></NewBidSmart>}
-            </Route> */}
         </Switch>
       </div>
     </Router>

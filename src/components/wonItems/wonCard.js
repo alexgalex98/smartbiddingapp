@@ -46,15 +46,15 @@ const WonCard = ({
         <p className="card-title overflow-ellipsis title">{prodName}</p>
         <div className="wrapper">
           <div className="bid">
-            <p className="overflow-ellipsis">CURRENT BID</p>
+            <p className="overflow-ellipsis">WON PRICE</p>
             <p className="overflow-ellipsis price">${currentPrice}</p>
           </div>
-          <div className="time">
+          {/* <div className="time">
             <p className="overflow-ellipsis">TIME REMAINING</p>
             <p className="overflow-ellipsis timeperiod">
               <MyCountdown sec={secondsLeft * 1000} renderer />
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="parentbtnUpdate flex-parent jc-center">

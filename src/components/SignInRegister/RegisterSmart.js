@@ -46,6 +46,7 @@ function RegisterSmart({ registerData, registerReq, success, isSuccess }) {
       console.log("ssssssss", success);
       localStorage.setItem("userReg", success.email);
       localStorage.setItem("user", success.id);
+      localStorage.setItem("isAuthenticated", "true");
       history.push("/home");
       // refreshPage();
     }

@@ -61,7 +61,13 @@ function BidPageSmart({
     loadBidders(match.params.id);
     //fetchBidders()
   }, [fetchBid, bidForItemRequest]);
-
+  console.log(similarItems.similarItems.length, "SIMMII");
+  let approved = [];
+  for (let i = 0; i < similarItems.similarItems.length; i++) {
+    if (similarItems.similarItems[i].status === "approved") {
+      approved.push(similarItems.similarItems[i]);
+    }
+  }
   console.log(biddersData, "MIAUUU");
   return bidData.loading ? (
     <h2>Loading</h2>
@@ -86,7 +92,7 @@ function BidPageSmart({
         }
       </div>
       <div>
-        <SimilarCardList items={similarItems.similarItems}></SimilarCardList>
+        <SimilarCardList items={approved}></SimilarCardList>
       </div>
     </div>
   );

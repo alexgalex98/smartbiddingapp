@@ -20,6 +20,10 @@ const NavBar = () => {
   if (store.getState().isSuccess) {
     setS(store.getState().isSuccess);
   }
+  const logout = () => {
+    // localStorage.removeItem("isAuthenticated");
+    localStorage.clear();
+  };
 
   console.log(s);
 
@@ -85,7 +89,7 @@ const NavBar = () => {
                   aria-labelledby="dropdownMenuButton1"
                 >
                   <li>
-                    <a className="dropdown-item" href="/">
+                    <a className="dropdown-item" href="/" onClick={logout}>
                       Sign out
                     </a>
                   </li>

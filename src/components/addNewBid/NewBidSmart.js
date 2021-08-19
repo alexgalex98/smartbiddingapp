@@ -83,7 +83,7 @@ function NewBidSmart({ newBidData, newBidReq, success, isSuccess }) {
   useEffect(() => {
     if (isSuccess && name !== "goOnBaby") {
       console.log("SUCEEESSS");
-      history.push("/items");
+      // history.push("/items");
       console.log("SUCEEESSS");
     }
   }, [isSuccess]);

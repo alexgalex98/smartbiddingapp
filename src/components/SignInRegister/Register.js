@@ -30,7 +30,11 @@ const Register = ({
               />
             </div>
             <div className="mt3">
-              <label className="db fw6 lh-copy f6" htmlFor="email-address">
+              <label
+                className="db fw6 lh-copy f6"
+                htmlFor="email-address"
+                for="InputEmail"
+              >
                 Email
               </label>
               <input
@@ -38,7 +42,7 @@ const Register = ({
                 placeholder="Enter email"
                 type="email"
                 name="email-address"
-                id="email-address"
+                id="InputEmail"
                 onChange={(e) => onEmailChange(e.target.value)}
               />
             </div>
@@ -65,7 +69,6 @@ const Register = ({
             />
           </div>
           <div className="lh-copy mt3">
-            {/* {} LINK REGISTER  */}
             Do you already have an account?
             <Link to="/" className="link">
               {" "}

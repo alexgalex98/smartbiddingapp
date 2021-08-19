@@ -5,31 +5,6 @@ import "../../styles/Card.css";
 
 const CardListAdmin = ({ items }) => {
   return (
-    // <div>
-    /*	{ <Container>
-				<Row>
-				{
-					items.map(item => {
-						return (
-									<Col xs={12} md={6} lg={3} key={item.id}>
-										<Card
-												id={item.id}
-												prodName ={item.prodname}
-												startPrice={item.startprice}
-												category={item.category}
-												buyNowPrice={item.buynowprice}
-												description={item.description}
-												condition={item.condition_}
-												image={item.image}
-												secondsLeft={item.secondsleft}
-											/>
-									</Col>	
-						);
-					})
-					
-				}
-				</Row>
-			</Container> }*/
     <div>
       {
         <Container className="container-fluid d-flex justify-content-center">

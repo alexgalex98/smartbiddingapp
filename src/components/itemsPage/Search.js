@@ -8,7 +8,7 @@ import { FaArrowUp } from "react-icons/fa";
 
 const Search = ({ items, fetchExpired }) => {
   const [q, setQ] = useState("");
-  const [searchParam] = useState(["prodname", "category"]);
+  const [searchParam] = useState(["prodname"]);
   const [filterParamCategory, setFilterParamCategory] = useState(["All"]);
   const [filterParamCondition, setFilterParamCondition] = useState(["All"]);
 
@@ -63,7 +63,7 @@ const Search = ({ items, fetchExpired }) => {
                   onChange={(e) => setQ(e.target.value)}
                 />
 
-                <span className="sr-only">Search countries here</span>
+                <span className="sr-only">Search items here</span>
               </label>
             </div>
           </div>

@@ -35,11 +35,13 @@ function SignInSmart({ signInData, signInReq, success, isSuccess }) {
         console.log("ADMIN");
         history.push("/adminPage");
         localStorage.setItem("user", success.id);
+        localStorage.setItem("isAuthenticated", "admin");
       } else {
         console.log("NU ADMIN");
         history.push("/home");
         console.log("SMARTYYY", success);
         localStorage.setItem("user", success.id);
+        localStorage.setItem("isAuthenticated", "true");
         // refreshPage();
       }
     }
