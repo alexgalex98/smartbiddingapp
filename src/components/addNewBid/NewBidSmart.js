@@ -18,7 +18,12 @@ function NewBidSmart({ newBidData, newBidReq, success, isSuccess }) {
   const [buyNowPrice, setBuyNowPrice] = useState(1000);
   const [bidDuration, setBidDuration] = useState(1000);
   const [image, setImage] = useState("hh");
-  const [dateChange, setDateChange] = useState(new Date());
+  // const [dateChange, setDateChange] = useState(new Date());
+  var currentDateConst = new Date();
+
+  const [dateChange, setDateChange] = useState(
+    new Date(currentDateConst.getTime() + 5 * 60000)
+  );
   const created_by = localStorage.getItem("user");
   const history = useHistory();
 

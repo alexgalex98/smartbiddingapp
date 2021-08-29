@@ -4,7 +4,7 @@ import "../../styles/Card.css";
 
 const OnBiddedItemsCardList = ({ items }) => {
   return (
-    <div>
+    <div className="itemsListSpacing">
       {
         <Container className="mycardlist">
           <Row>

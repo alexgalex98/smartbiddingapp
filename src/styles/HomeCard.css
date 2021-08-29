@@ -40,7 +40,7 @@ button {
   display: block;
   margin-bottom: 10px;
   padding: 3px 11px;
-  color: #bca487;
+  color: #f4976c;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
   border-radius: 3px;
@@ -65,7 +65,7 @@ button {
   border: none;
   border-radius: 50px;
   background: none;
-  background-color: #bca487;
+  background-color: #f4976c;
 }
 
 .product-wrap-10:hover .product-action-2 {
@@ -74,4 +74,24 @@ button {
   left: 15%;
 
   transition: 1s;
+}
+
+.homecard {
+  padding: 5%;
+}
+
+.cardImgHome {
+}
+
+.imagewrapperHome {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+}
+
+.home {
+  top: 10% !important;
+  left: 77% !important;
 }

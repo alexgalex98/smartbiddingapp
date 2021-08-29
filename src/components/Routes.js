@@ -20,6 +20,7 @@ import UpdatePageSmart from "./UpdateBid/UpdatePageSmart";
 import WonItemsPageSmart from "./wonItems/wonItemsPageSmart";
 import ProtectedRoute from "./ProtectedRoute";
 import ProtectedRouteAdmin from "./ProtectedRouteAdmin";
+import NavBarAdmin from "./NavBarAdmin";
 export default function Routes() {
   return (
     <Router>
@@ -69,7 +70,10 @@ export default function Routes() {
           <ProtectedRouteAdmin
             exact
             path="/adminPage"
-            component={(props) => <AdminPageSmart></AdminPageSmart>}
+            component={(props) => [
+              <NavBarAdmin></NavBarAdmin>,
+              <AdminPageSmart></AdminPageSmart>,
+            ]}
           ></ProtectedRouteAdmin>
 
           <ProtectedRoute

@@ -42,11 +42,13 @@ const WonCard = ({
       <div className="">
         <img src={image} alt="image1" className="card-img-top" />
       </div>
-      <div className="card-body text-dark div">
-        <p className="card-title overflow-ellipsis title">{prodName}</p>
+      <div className="card-body text-dark div myCardbody">
+        <p className="card-title overflow-ellipsis title mycardtitle ">
+          {prodName}
+        </p>
         <div className="wrapper">
           <div className="bid">
-            <p className="overflow-ellipsis">WON PRICE</p>
+            <p className="overflow-ellipsis">LAST BID</p>
             <p className="overflow-ellipsis price">${currentPrice}</p>
           </div>
           {/* <div className="time">
@@ -58,9 +60,12 @@ const WonCard = ({
         </div>
       </div>
       <div className="parentbtnUpdate flex-parent jc-center">
-        <Link to={`/items/${id}`} className="btn margin-right">
+        {/* <Link to={`/items/${id}`} className="btn margin-right">
           More Details
-        </Link>
+        </Link> */}
+        <a href={`/items/${id}`} className="btn margin-right">
+          More Details
+        </a>
       </div>
     </div>
   );

@@ -16,13 +16,18 @@ const HomePageCard = ({
 }) => {
   console.log(image);
   return (
-    <div className="product-wrap-10 mb-25">
+    <div className="product-wrap-10 mb-25 homecard">
       <div className="product-img">
-        <a href={`/items/${id}`}>
-          <img src={image}></img>
-        </a>
-        <div className="product-img-badges">
+        <div className="imagewrapperHome">
+          <a href={`/items/${id}`}>
+            <img src={image} className="cardImgHome"></img>
+          </a>
+        </div>
+        {/* <div className="product-img-badges">
           <span>New</span>
+        </div> */}
+        <div className="card-badge home">
+          <p className="badgetext">{condition}</p>
         </div>
         <div className="product-action-2">
           <div title="Quick View " className="button">

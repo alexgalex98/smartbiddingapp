@@ -1,0 +1,166 @@
+.imagediv {
+  display: flex;
+  height: 250px;
+  /* justify-content: center; */
+  /* height: 800px; */
+}
+
+.imagediv img {
+  width: 40%;
+  height: 240px;
+  /* margin: 0px; */
+  padding: 3px;
+}
+
+.cardBodyAdmin {
+  margin-top: -250px;
+}
+
+.adminDesc {
+  height: 120px;
+  margin-left: 43%;
+  margin-right: 3%;
+  max-width: 300px;
+  /* width: 100px; */
+}
+
+.adminCardTitle {
+  font-size: 24px;
+  margin: 0;
+  color: #010101;
+  line-height: 30px;
+  font-family: "Poppins, sans-serif";
+  font-weight: 500;
+  margin-left: 43%;
+}
+
+.adminPrice {
+  font-size: 24px;
+  line-height: 1;
+  display: inline-block;
+  color: #f4976c;
+  margin-left: 43%;
+}
+.optionButton {
+  background-color: #343538 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  text-transform: uppercase;
+  color: #fff !important;
+  border: 1px solid transparent !important;
+  /* background-color: #343538; */
+}
+
+.btnAdmin {
+  color: #f4976c !important;
+  border-color: #f4976c !important ;
+  align-self: center;
+  margin-right: 20px;
+}
+.btnAdmin:hover {
+  color: #ffffff !important;
+  background-color: #f4976c !important ;
+}
+
+.optionButton:hover {
+  color: #ffffff !important;
+  background-color: #f4976c !important ;
+}
+.overflow-ellipsisAdmin {
+  display: "-webkit-box";
+  max-width: 500px;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* mixin for multiline */
+.overflow-ellipsisAdmin {
+  overflow: hidden;
+  position: relative;
+  line-height: 1.2em;
+  max-height: 6em;
+  text-align: justify;
+  /* margin-right: -1em; */
+  padding-right: 1em;
+}
+.overflow-ellipsisAdmin:before {
+  content: "...";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.overflow-ellipsisAdmin:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  background: white;
+}
+.parentbtnAdmin {
+  margin-top: 10px;
+  margin-left: 43%;
+  margin-bottom: 20px;
+}
+/* DIALOGBOX DESIGN */
+.promo-img {
+  flex: 0 0 50%;
+  display: table-cell;
+  height: 300px;
+  text-align: center;
+  width: 300px;
+  vertical-align: middle;
+}
+
+.adminDialogContent {
+  /* padding: 0px !important; */
+  width: 1000px;
+}
+.adminDialogImage {
+  max-height: 400px;
+}
+.dialogAdmin {
+  /* width: 1000px !important; */
+}
+
+.textContentAdminDialog {
+  width: 350px;
+}
+
+.adminTable {
+  width: 200px !important;
+}
+.Adminstartprice {
+  width: 200px !important;
+}
+
+.descriptionDialog {
+  padding-top: 30px;
+  text-align: justify;
+}
+
+.card-adgeAdmin {
+  position: absolute;
+  top: 3.25rem;
+  z-index: 1;
+  background-color: #f4976c;
+  vertical-align: middle;
+  line-height: 30px;
+  margin-bottom: 0px;
+}
+
+.disapprove {
+  color: #e93535 !important;
+}
+
+.approve {
+  color: #56ac4a !important;
+}
+
+.cardAdmin {
+  min-height: 200px;
+  margin-top: 20px;
+  /* border: none !important; */
+}

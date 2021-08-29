@@ -34,13 +34,26 @@ const CarouselHome = () => {
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active" data-bs-interval="5000">
-            <img src="/images/img1.jpg" className="d-block w-100" alt="..." />
+            <img
+              src="/images/auctioneer.jpg"
+              className="d-block w-100"
+              alt="..."
+            />
           </div>
           <div className="carousel-item">
-            <img src="/images/img2.jpg" className="d-block w-100" alt="..." />
+            <img
+              src="/images/auctioneer1.png"
+              className="d-block w-100"
+              alt="..."
+            />
           </div>
           <div className="carousel-item">
-            <img src="/images/img1.jpg" className="d-block w-100" alt="..." />
+            <img
+              className="imgCarousel"
+              src="/images/auctioneer3.jpg"
+              className="d-block w-100"
+              alt="..."
+            />
           </div>
         </div>
         <button
@@ -81,8 +94,8 @@ const CarouselHome = () => {
                 <h5>Trustworty Sellers</h5>
                 <p className="bottomBorder marginT"></p>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                  eiusm.
+                  All the sellers are thruswothy and provide correct information
+                  about their products.
                 </p>
               </div>
             </div>
@@ -97,8 +110,7 @@ const CarouselHome = () => {
                 <h5>Support 24/7</h5>
                 <p className="bottomBorder marginT"></p>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                  eiusm.
+                  Customers can get help and find answers to their questions.
                 </p>
               </div>
             </div>
@@ -113,8 +125,8 @@ const CarouselHome = () => {
                 <h5>Unique Items</h5>
                 <p className="bottomBorder marginT"></p>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                  eiusm.
+                  Unique items can be found on the platform, even collectable
+                  items.
                 </p>
               </div>
             </div>

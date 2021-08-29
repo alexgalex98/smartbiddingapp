@@ -11,6 +11,7 @@ import React, { useEffect } from "react";
 import DialogBox from "./DialogBox";
 import handleClickToOpen from "./DialogBox";
 import DialogBoxSmart from "./DialogBoxSmart";
+import "../../styles/AdminCard.css";
 
 const CardAdmin = ({
   id,
@@ -32,37 +33,36 @@ const CardAdmin = ({
     setOpen(false);
   };
   return (
-    // <div className='tc bg-light-green dib br3 ma2 bw2 shadow-5'>
-    // 	{/* {console.log('sec',secondsLeft)} */}
-    // 	<img alt='' width='100px' height='auto' src={image}></img>
-    // 	<div>
-    // 		<h1 className='f5 lh-copy'>Product : {prodName}</h1>
-    // 		<h1 className='f6 lh-copy'>Category: {category}</h1>
-    // 		<p className='f6 lh-copy '>Current bid: {startPrice}</p>
-    // 		<p className='f6 lh-copy '>Buy now price: {buyNowPrice}</p>
-    // 		<p className='f5 desc'>Description: </p>
-    // 		<p className='desc'>{description}</p>
-    // 		<p>Condition: {condition}</p>
-    // 		<div>Time left: <BidTimer timeFromServer={secondsLeft}/></div>
-
-    // 	</div>
-
-    <div className="card text-center">
-      <div className="overflow">
+    <div className="card cardAdmin ">
+      <div className="imagediv">
         <img src={image} alt="image1" className="card-img-top" />
       </div>
-      <div className="card-body text-dark div">
-        <h4 className="card-title ">{prodName}</h4>
-        <p className="card-text text-secondary overflow-ellipsis">
+      <div className="cardBodyAdmin">
+        <h4 className="card-title  adminCardTitle">{prodName}</h4>
+        <p className="adminPrice">${startPrice}</p>
+        <p className="card-text text-secondary overflow-ellipsisAdmin adminDesc">
           {description}
+          {/* Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book. It has survived not only
+          five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. */}
         </p>
       </div>
-      <div className="parentbtn">
-        <Link to={`/items/${id}`} className="btn btn-outline-success btnDiv">
-          Go to bid
-        </Link>
-        <Button variant="outlined" color="primary" onClick={handleClickToOpen}>
-          Options
+      <div className="parentbtnAdmin">
+        {/* <Link
+          to={`/items/${id}`}
+          className="btn btn-outline-success btnDiv btnAdmin"
+        >
+          More Details
+        </Link> */}
+        <Button
+          variant="outlined"
+          className="optionButton"
+          onClick={handleClickToOpen}
+        >
+          More Details
         </Button>
         {open ? (
           <DialogBoxSmart
@@ -72,48 +72,14 @@ const CardAdmin = ({
             open={open}
             handleToClose={handleToClose}
             id={id}
+            startPrice={startPrice}
+            category={category}
+            buyNowPrice={buyNowPrice}
           />
         ) : null}
-
-        {/* <DialogBox
-          prodName={prodName}
-          description={description}
-          image={image}
-          open={open}
-        ></DialogBox> */}
       </div>
     </div>
-
-    // </div>
   );
 };
 
 export default CardAdmin;
-
-// const [open, setOpen] = React.useState(false);
-
-// const handleClickToOpen = () => {
-//   setOpen(true);
-// };
-// const handleToClose = () => {
-//   setOpen(false);
-// };
-// <Button variant="outlined" color="primary" onClick={handleClickToOpen}>
-// Open Demo Dialog
-// </Button>
-// <Dialog open={open} onClose={handleToClose}>
-// <DialogTitle>{"How are you?"}</DialogTitle>
-// <DialogContent>
-//   <DialogContentText>
-//     I am Good, Hope the same for you!
-//   </DialogContentText>
-// </DialogContent>
-// <DialogActions>
-//   <Button onClick={handleToClose} color="primary" autoFocus>
-//     Approve
-//   </Button>
-//   <Button onClick={handleToClose} color="primary" autoFocus>
-//     Disapprove
-//   </Button>
-// </DialogActions>
-// </Dialog>

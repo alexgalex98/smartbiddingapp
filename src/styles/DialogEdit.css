@@ -3,25 +3,17 @@
   background-color: #f4946c !important;
   border-color: #f4946c !important;
   margin-top: 5%;
-}
-
-/* .btn-sep {
-    padding: 10px 10px 15px 10px !important;
-  } */
-
+} /* .btn-sep {    padding: 10px 10px 15px 10px !important;  } */
 .btn-sep {
   margin-right: 10px;
   margin-top: -4px;
 }
-
 .btn-1 {
   color: #fff !important;
 }
-
 .btn-1:hover {
   background: #d4815d !important;
 }
-
 .btn-1:active {
   background: #d4815d !important;
   top: 2px;
@@ -38,53 +30,31 @@
   letter-spacing: 0.8px !important;
   font-size: 30px !important;
   font-weight: bold !important;
-  font-family: "Josefin Sans, sans-serif" !important;
-  /* font-size: 16px;
-  font-weight: bold;
-  background: -moz-linear-gradient(#829aa8, #405a6a);
-  background: -webkit-linear-gradient(#829aa8, #405a6a); */
+  font-family: "Josefin Sans, sans-serif" !important; /* font-size: 16px;  font-weight: bold;  background: -moz-linear-gradient(#829aa8, #405a6a);  background: -webkit-linear-gradient(#829aa8, #405a6a); */
 }
-
 .parentbtnUpdate {
-  /* position: absolute; */
-  /* float: left;
-  bottom: 20px;
-  width: 50% !important;
-  margin-left: 10%;
-  margin-right: 10%;
-  display: inline-block !important;
-  /* margin-top: -18%; */
-  /* width: 100px !important; */
-  /* height: 100px; */
+  /* position: absolute; */ /* float: left;  bottom: 20px;  width: 50% !important;  margin-left: 10%;  margin-right: 10%;  display: inline-block !important;  /* margin-top: -18%; */ /* width: 100px !important; */ /* height: 100px; */
 }
 .btnEdit {
-  /* margin-top: -20% !important; */
-  /* float: right; */
-  /* margin-left: 30% !important; */
-  /* width: 50px !important; */
-  /* height: 40px !important; */
-  /* margin-right: 10% !important; */
-  /* bottom: 20px !important; */
-  /* margin-top: -200px; */
+  /* margin-top: -20% !important; */ /* float: right; */ /* margin-left: 30% !important; */ /* width: 50px !important; */
+  /* height: 40px !important; */ /* margin-right: 10% !important; */ /* bottom: 20px !important; */ /* margin-top: -200px; */
 }
-
 .flex-parent {
   display: flex;
   margin-bottom: 30px;
 }
-
 .jc-center {
   justify-content: center;
 }
-
 .margin-right {
   margin-right: 20px;
   color: #f4976c !important;
-  border-color: #f4976c !important;
-  /* align-self: center; */
-  /* margin-bottom: 20px; */
+  border-color: #f4976c !important; /* align-self: center; */ /* margin-bottom: 20px; */
 }
-
 .cardEdit {
   padding-bottom: 0px !important;
+}
+.mycardbtn:hover {
+  color: #ffffff !important;
+  background-color: #f4976c !important ;
 }

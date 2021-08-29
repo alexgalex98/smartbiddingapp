@@ -1,0 +1,49 @@
+.pagination {
+  padding-bottom: 100px !important;
+  margin-top: -10% !important;
+  /* margin-left: 20% !important; */
+}
+
+.pagination a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: none;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+}
+
+.active1 a {
+  background-color: #f4946c !important;
+  color: white !important;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+.pagination a {
+  border-radius: 5px;
+}
+
+.active1 a {
+  border-radius: 5px;
+}
+
+.paginationwrapper {
+  bottom: 5%;
+  left: 100px !important;
+}
+.prev {
+  margin-right: 0 !important;
+  text-decoration: none !important;
+}
+.next {
+  margin-left: 0 !important;
+  text-decoration: none !important;
+}
+
+.singlepage {
+  margin-left: 50% !important;
+}

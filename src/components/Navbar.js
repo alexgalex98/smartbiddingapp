@@ -30,17 +30,17 @@ const NavBar = () => {
   return (
     <div>
       <Navbar className="navbar fixed-top" expand="lg">
-        <Navbar.Brand className="navbarbrand" href="#home">
+        <Navbar.Brand className="navbarbrand" href="/home">
           <img className="image" src="/images/logo.png" />
         </Navbar.Brand>
         <Navbar.Toggle className="toggleicon" />
         <Navbar.Collapse id="basic-navbar-nav" className="text">
           <Nav className="mr-auto">
-            <Nav.Link href="#1">
+            {/* <Nav.Link href="#1">
               <Link className="navlink active" to="/home">
                 Home
               </Link>
-            </Nav.Link>
+            </Nav.Link> */}
             {/* <Nav.Link href="">
               <Link className="navlink" to="/signout">
                 Sign Out

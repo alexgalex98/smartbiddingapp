@@ -166,3 +166,25 @@
   font-weight: 500 !important;
   font-family: "Fira Sans", sans-serif !important;
 }
+
+.myCardbody {
+  padding-bottom: 0 !important;
+}
+
+.itemsListSpacing {
+  margin-bottom: 100px;
+}
+
+.messagenotItems {
+  margin-top: 150px;
+}
+
+.textNoItems {
+  text-align: center;
+  color: #555252;
+  font-size: 19px;
+}
+
+.icon-emptymsg {
+  margin: 5px !important;
+}

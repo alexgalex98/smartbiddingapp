@@ -5,12 +5,15 @@ import Card from "./Card";
 import { FaSearch } from "react-icons/fa";
 import "../../styles/Search.css";
 import { FaArrowUp } from "react-icons/fa";
+import Pagination from "../Pagination";
 
 const Search = ({ items, fetchExpired }) => {
   const [q, setQ] = useState("");
   const [searchParam] = useState(["prodname"]);
   const [filterParamCategory, setFilterParamCategory] = useState(["All"]);
   const [filterParamCondition, setFilterParamCondition] = useState(["All"]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(12);
 
   function searchItems(items) {
     console.log(filterParamCondition, "CONDD");
@@ -36,6 +39,17 @@ const Search = ({ items, fetchExpired }) => {
       }
     });
   }
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = searchItems(items).slice(
+    indexOfFirstPost,
+    indexOfLastPost
+  );
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div>
       <div className="search-wrapper">
@@ -63,7 +77,7 @@ const Search = ({ items, fetchExpired }) => {
                   onChange={(e) => setQ(e.target.value)}
                 />
 
-                <span className="sr-only">Search items here</span>
+                <span className="sr-only">Search countries here</span>
               </label>
             </div>
           </div>
@@ -73,8 +87,8 @@ const Search = ({ items, fetchExpired }) => {
       <div>
         {
           <Container className="cardlist">
-            <Row>
-              {searchItems(items).map((item) => {
+            <Row className="rowlistCards">
+              {currentPosts.map((item) => {
                 return (
                   <Col className="col-md-6 col-lg-3 col-xs-12">
                     <Card
@@ -94,6 +108,12 @@ const Search = ({ items, fetchExpired }) => {
                 );
               })}
             </Row>
+            <Pagination
+              postsPerPage={postsPerPage}
+              totalPosts={searchItems(items).length}
+              paginate={paginate}
+              currentPage={currentPage}
+            />
           </Container>
         }
       </div>

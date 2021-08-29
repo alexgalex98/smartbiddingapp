@@ -112,3 +112,7 @@
 #myBtn:hover {
   background-color: #555;
 }
+.rowlistCards {
+  margin-bottom: 15% !important
+  ;
+}

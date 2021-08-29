@@ -21,6 +21,9 @@ const DialogBoxSmart = ({
   handleToClose,
   id,
   approveItemRequest,
+  startPrice,
+  category,
+  buyNowPrice,
   approveItemLoading,
   approveItemFailure,
   approveItemSuccess,
@@ -56,6 +59,9 @@ const DialogBoxSmart = ({
         handleApprove={handleApprove}
         handleClose={handleToClose}
         handleDisapprove={handleDisapprove}
+        startPrice={startPrice}
+        category={category}
+        buyNowPrice={buyNowPrice}
         id={id}
       />
     </div>

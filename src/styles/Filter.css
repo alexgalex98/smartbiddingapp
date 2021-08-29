@@ -1,22 +1,3 @@
-/* .searchContainer {
-  background-color: lightblue;
-
-  margin-top: 49px;
-  display: flex; 
-
-  align-items: center;
-}
-
-input[type="text"] {
-  height: 30px;
-  margin-left: 100px;
-}
-
-label {
-  padding-left: 100px;
-} /
-*/
-
 .auctionPage {
   margin-top: 8%;
   margin-left: 3%;
@@ -25,17 +6,13 @@ label {
   /* max-width: 20%; */
   border: none;
 }
-
 .dorpdownfilter {
-  position: relative !important;
-  /* margin-bottom: 0.2em;
-  padding: 10px 0 10px 20px; */
+  position: relative !important; /* margin-bottom: 0.2em;  padding: 10px 0 10px 20px; */
   color: #9a9a9a !important;
   text-transform: uppercase !important;
   font-weight: 700 !important;
   font-size: 1.3rem !important;
 }
-
 .filterDiv {
   display: inline;
   width: 300px !important ;
@@ -45,24 +22,19 @@ label {
 .search-wrapper {
   /* margin-top: -10px; */
 }
-
 .form-check-input:checked {
   background-color: #f4946c;
   border-color: #f4946c;
 }
-
 .MuiSlider-root {
   color: #f4946c !important;
 }
-
 .accordion-button:not(.collapsed) {
   color: black;
   background-color: #f6f6f6;
   box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
-  font-weight: 700;
-  /* background-image: "src\\styles\\icons\\arrow-down-sign-to-navigate.svg"; */
+  font-weight: 700; /* background-image: "src\\styles\\icons\\arrow-down-sign-to-navigate.svg"; */
 }
-
 .cd-filter-content {
   margin-top: 20px;
 }

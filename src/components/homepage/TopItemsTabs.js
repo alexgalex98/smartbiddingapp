@@ -26,10 +26,10 @@ const TopItemsTabs = ({ lastItems, mostPopularItems }) => {
           >
             <Tab eventKey="home" title="New Arrivals">
               <Container className="cardlist">
-                <Row className="row">
+                <Row className="row rowHome">
                   {lastItems.map((item) => {
                     return (
-                      <Col className="col-md-6 col-lg-4 col-xs-12">
+                      <Col className="col-md-6 col-lg-4 col-12 col-xs-12">
                         <HomePageCard
                           id={item.id}
                           prodName={item.prodname}
@@ -50,10 +50,10 @@ const TopItemsTabs = ({ lastItems, mostPopularItems }) => {
             </Tab>
             <Tab eventKey="profile" title="Most Popular">
               <Container className="cardlist">
-                <Row className="row">
+                <Row className="row rowHome">
                   {mostPopularItems.map((item) => {
                     return (
-                      <Col className="col-md-6 col-lg-4 col-xs-12">
+                      <Col className="col-md-6 col-lg-4 col-12 col-xs-12">
                         <HomePageCard
                           id={item.id_item}
                           prodName={item.prodname}

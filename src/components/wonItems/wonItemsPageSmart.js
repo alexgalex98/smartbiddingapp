@@ -1,9 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { fetchSimilarItems } from "../../actions/homePageActions";
 import { fetchLastItems } from "../../actions/lastItemsActions";
 import { fetchWonItems } from "../../actions/wonItemsAction";
 import WonCardList from "../wonItems/wonCardlist";
+import Pagination from "../Pagination";
+import { FaExclamationCircle } from "react-icons/fa";
 
 function WonItemsPageSmart({
   lastItems,
@@ -11,6 +13,8 @@ function WonItemsPageSmart({
   wonItems,
   fetchWonItems,
 }) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(16);
   useEffect(() => {
     fetchWonItems();
     // fetchLastItems();
@@ -18,15 +22,43 @@ function WonItemsPageSmart({
 
   console.log("SMARTTMY");
   console.log(wonItems, "IREE");
+  // Get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = wonItems.wonItems.slice(
+    indexOfFirstPost,
+    indexOfLastPost
+  );
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return wonItems.loading ? (
     <h1>Items are loading!!</h1>
   ) : wonItems.error ? (
     <h1>ERROR{wonItems.error}</h1>
   ) : (
     <div>
-      <h1 className="text-center">My items</h1>
-      <WonCardList items={wonItems.wonItems}></WonCardList>
-      {/* <WonCardList items={lastItems.lastItems}></WonCardList> */}
+      {console.log(wonItems.wonItems, "HHHHHHHHHHHHHHHH")}
+      {wonItems.wonItems != "NOT FOUND" ? (
+        <div>
+          <WonCardList items={currentPosts}></WonCardList>
+
+          <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={wonItems.wonItems.length}
+            paginate={paginate}
+            currentPage={currentPage}
+          />
+        </div>
+      ) : (
+        <div className="messagenotItems">
+          <h1 className="textNoItems">
+            <FaExclamationCircle className="icon-emptymsg" />
+            No items bought yet
+          </h1>
+        </div>
+      )}
     </div>
   );
 }

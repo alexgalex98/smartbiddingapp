@@ -42,3 +42,14 @@
 .firstRow {
   margin-top: 18%;
 }
+
+.addToast {
+  margin-top: -10px;
+  position: fixed;
+  z-index: 11;
+  margin-left: 20px !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+  border-color: #ced4da !important;
+}

@@ -10,6 +10,7 @@ import { fetchSimilarItems } from "../../actions/homePageActions";
 import Bid from "./Bid";
 import NavBar from "../Navbar";
 import SimilarCardList from "./similarCardList";
+import CarouselSimilarItems from "./CarouselSimilarItems";
 
 function BidPageSmart({
   bidData,
@@ -26,6 +27,11 @@ function BidPageSmart({
   similarItems,
 }) {
   const [price, setPrice] = useState();
+  const [showA, setShowA] = useState(false);
+  const [showB, setShowB] = useState(false);
+
+  const toggleShowA = () => setShowA(!showA);
+  const toggleShowB = () => setShowB(!showB);
 
   const onPriceChange = (event) => {
     console.log(price);
@@ -39,6 +45,7 @@ function BidPageSmart({
     if (price > bidData.bid.currentprice) {
       bidForItemRequest(price, currentItem, currentUser);
       window.location.replace(`${bidData.bid.id}`);
+      toggleShowA();
     }
     console.log(price);
     newbid.price = price;
@@ -50,6 +57,7 @@ function BidPageSmart({
     let currentItem = match.params.id;
     let currentUser = localStorage.getItem("user");
     buyItemRequest(currentItem, currentUser);
+    toggleShowB();
     console.log("ONBUYSUBMIT");
   };
   //console.log("BAUUUUSE",match.params.id)
@@ -61,13 +69,7 @@ function BidPageSmart({
     loadBidders(match.params.id);
     //fetchBidders()
   }, [fetchBid, bidForItemRequest]);
-  console.log(similarItems.similarItems.length, "SIMMII");
-  let approved = [];
-  for (let i = 0; i < similarItems.similarItems.length; i++) {
-    if (similarItems.similarItems[i].status === "approved") {
-      approved.push(similarItems.similarItems[i]);
-    }
-  }
+
   console.log(biddersData, "MIAUUU");
   return bidData.loading ? (
     <h2>Loading</h2>
@@ -88,11 +90,17 @@ function BidPageSmart({
             onBuySubmit={onBuySubmit}
             bidders={biddersData}
             secondsleft={bidData.bid.secondsleft}
+            showA={showA}
+            toggleShowA={toggleShowA}
+            showB={showB}
+            toggleShowB={toggleShowB}
           ></Bid>
         }
       </div>
       <div>
-        <SimilarCardList items={approved}></SimilarCardList>
+        <CarouselSimilarItems
+          items={similarItems.similarItems}
+        ></CarouselSimilarItems>
       </div>
     </div>
   );

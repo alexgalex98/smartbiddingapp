@@ -8,6 +8,8 @@ import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
 import LocalizationProvider from "@material-ui/lab/LocalizationProvider";
 import "../../styles/NewBid.css";
 import { FaSave } from "react-icons/fa";
+// import ToastDemo from "./ToastDemo";
+import { Toast } from "react-bootstrap";
 
 const NewBid = ({
   name,
@@ -35,7 +37,12 @@ const NewBid = ({
   const [filename, setFilename] = useState("Choose File");
   const [uploadedFile, setUploadedFile] = useState({});
   const [path, sethPath] = useState("testImage");
+  const style = {
+    zIndex: 100,
+  };
+  const [showA, setShowA] = useState(false);
 
+  const toggleShowA = () => setShowA(!showA);
   const onChangeDate = () => {
     console.log(dateChange);
   };
@@ -103,6 +110,7 @@ const NewBid = ({
         console.log("2");
 
         onSubmit();
+        toggleShowA();
       } catch {
         console.log("err");
       }
@@ -111,102 +119,103 @@ const NewBid = ({
   };
 
   return (
-    <Container>
-      <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        {/* {console.log("nume:", name, "cat:", category, "cond", condition)} */}
-        <Row className="mb-3 firstRow">
-          <Form.Group as={Col} md="4" controlId="validationCustom01">
-            <Form.Label>Product Name</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              placeholder="Product Name"
-              onChange={(e) => setName(e.target.value)}
-            />
-            <Form.Control.Feedback type="invalid">
-              Please provide an product name.
-            </Form.Control.Feedback>
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group as={Col} md="3" controlId="validationCustom02">
-            <Form.Label>Category</Form.Label>
-            <select
-              class="custom-select"
-              required
-              onChange={(e) => onCategoryChange(e.target.value)}
-            >
-              <option label="Choose category"></option>
-              <option>Electronics</option>
-              <option>Fashion</option>
-              <option>Sports</option>
-              <option>Health & Beauty</option>
-              <option>Toys</option>
-              <option>Home & Garden</option>
-            </select>
-            <Form.Control.Feedback type="invalid">
-              Please pick a category.
-            </Form.Control.Feedback>
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group as={Col} md="5" controlId="validationCustom03">
-            <Form.Label>Description</Form.Label>
-            <Form.Control
-              required
-              as="textarea"
-              rows={1}
-              placeholder="Description"
-              onChange={(e) => onDescriptionChange(e.target.value)}
-            />
-            <Form.Control.Feedback type="invalid">
-              Please input a description.
-            </Form.Control.Feedback>
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          </Form.Group>
-        </Row>
-        <Row className="mb-3">
-          <Form.Group as={Col} md="2" controlId="validationCustom04">
-            <Form.Label>Condition</Form.Label>
-            <select
-              class="custom-select"
-              required
-              onChange={(e) => onConditionChange(e.target.value)}
-            >
-              <option label="Choose condition"></option>
-              <option>New</option>
-              <option>Used</option>
-            </select>
-            <Form.Control.Feedback type="invalid">
-              Please pick a condition.
-            </Form.Control.Feedback>
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group as={Col} md="2" controlId="validationCustom05">
-            <Form.Label>Start Price ($)</Form.Label>
-            <Form.Control
-              min="1"
-              required
-              type="number"
-              placeholder="0"
-              onChange={(e) => onStartPriceChange(e.target.value)}
-            />
-            <Form.Control.Feedback type="invalid">
-              Please provide the start price.
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group as={Col} md="2" controlId="validationCustom06">
-            <Form.Label>Buy Now Price ($)</Form.Label>
-            <Form.Control
-              min="2"
-              required
-              type="number"
-              placeholder="0"
-              onChange={(e) => onBuyNowPriceChange(e.target.value)}
-            />
-            <Form.Control.Feedback type="invalid">
-              Please provide the buy now price.
-            </Form.Control.Feedback>
-          </Form.Group>
-          {/* <Form.Group as={Col} md="2" controlId="validationCustom07">
+    <div>
+      <Container>
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          {/* {console.log("nume:", name, "cat:", category, "cond", condition)} */}
+          <Row className="mb-3 firstRow">
+            <Form.Group as={Col} md="4" controlId="validationCustom01">
+              <Form.Label>Product Name</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="Product Name"
+                onChange={(e) => setName(e.target.value)}
+              />
+              <Form.Control.Feedback type="invalid">
+                Please provide an product name.
+              </Form.Control.Feedback>
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md="3" controlId="validationCustom02">
+              <Form.Label>Category</Form.Label>
+              <select
+                class="custom-select"
+                required
+                onChange={(e) => onCategoryChange(e.target.value)}
+              >
+                <option label="Choose category"></option>
+                <option>Electronics</option>
+                <option>Fashion</option>
+                <option>Sports</option>
+                <option>Health & Beauty</option>
+                <option>Toys</option>
+                <option>Home & Garden</option>
+              </select>
+              <Form.Control.Feedback type="invalid">
+                Please pick a category.
+              </Form.Control.Feedback>
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md="5" controlId="validationCustom03">
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                required
+                as="textarea"
+                rows={1}
+                placeholder="Description"
+                onChange={(e) => onDescriptionChange(e.target.value)}
+              />
+              <Form.Control.Feedback type="invalid">
+                Please input a description.
+              </Form.Control.Feedback>
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            </Form.Group>
+          </Row>
+          <Row className="mb-3">
+            <Form.Group as={Col} md="2" controlId="validationCustom04">
+              <Form.Label>Condition</Form.Label>
+              <select
+                class="custom-select"
+                required
+                onChange={(e) => onConditionChange(e.target.value)}
+              >
+                <option label="Choose condition"></option>
+                <option>New</option>
+                <option>Used</option>
+              </select>
+              <Form.Control.Feedback type="invalid">
+                Please pick a condition.
+              </Form.Control.Feedback>
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md="2" controlId="validationCustom05">
+              <Form.Label>Start Price ($)</Form.Label>
+              <Form.Control
+                min="1"
+                required
+                type="number"
+                placeholder="0"
+                onChange={(e) => onStartPriceChange(e.target.value)}
+              />
+              <Form.Control.Feedback type="invalid">
+                Please provide the start price.
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md="2" controlId="validationCustom06">
+              <Form.Label>Buy Now Price ($)</Form.Label>
+              <Form.Control
+                min="2"
+                required
+                type="number"
+                placeholder="0"
+                onChange={(e) => onBuyNowPriceChange(e.target.value)}
+              />
+              <Form.Control.Feedback type="invalid">
+                Please provide the buy now price.
+              </Form.Control.Feedback>
+            </Form.Group>
+            {/* <Form.Group as={Col} md="2" controlId="validationCustom07">
             <Form.Label>Bid Duration (s)</Form.Label>
             <Form.Control
               required
@@ -219,60 +228,83 @@ const NewBid = ({
             </Form.Control.Feedback>
           </Form.Group> */}
 
-          <Form.Group as={Col} md="3">
-            <Form.Label className="pickTimeText">Pick Time</Form.Label>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <DateTimePicker
-                className="formDatePicker"
-                renderInput={(props) => <TextField {...props} />}
-                //label="Pick Date & Time"
-                value={dateChange}
-                minDateTime={new Date()}
-                onChange={(newValue) => {
-                  setDateChange(newValue);
-                  onChangeDate();
-                  // console.log(dateChange, "DATECHANGE");
-                  // console.log(
-                  //   Math.round(
-                  //     (dateChange.getTime() - currentDate.getTime()) / 1000
-                  //   )
-                  // );
-                  // onBidDurationChange(
-                  //   (dateChange.getTime() - currentDate.getTime()) / 1000
-                  // );
-                  // console.log(
-                  //   dateChange.getTime() - currentDate.getTime() / 1000,
-                  //   "IN ONCHANE"
-                  // );
-                  // console.log(dateChange, currentDate, "bllblbll");
-                }}
+            <Form.Group as={Col} md="3">
+              <Form.Label className="pickTimeText">Pick Time</Form.Label>
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <DateTimePicker
+                  className="formDatePicker"
+                  renderInput={(props) => <TextField {...props} />}
+                  //label="Pick Date & Time"
+                  value={dateChange}
+                  minDateTime={new Date()}
+                  onChange={(newValue) => {
+                    setDateChange(newValue);
+                    onChangeDate();
+                    // console.log(dateChange, "DATECHANGE");
+                    // console.log(
+                    //   Math.round(
+                    //     (dateChange.getTime() - currentDate.getTime()) / 1000
+                    //   )
+                    // );
+                    // onBidDurationChange(
+                    //   (dateChange.getTime() - currentDate.getTime()) / 1000
+                    // );
+                    // console.log(
+                    //   dateChange.getTime() - currentDate.getTime() / 1000,
+                    //   "IN ONCHANE"
+                    // );
+                    // console.log(dateChange, currentDate, "bllblbll");
+                  }}
+                />
+              </LocalizationProvider>
+            </Form.Group>
+            <Form.Group as={Col} md="3" controlId="validationCustom07">
+              <Form.Label>Image</Form.Label>
+              <div className="custom-file mb-2">
+                <input
+                  required
+                  className="custom-file-input"
+                  type="file"
+                  id="customFile"
+                  onChange={onChange}
+                />
+                <label className="custom-file-label" htmlFor="customFile">
+                  {filename}
+                </label>
+              </div>
+            </Form.Group>
+          </Row>
+          <Button type="submit" className="btnAdd btn-1  icon-info">
+            <span class="btn-label">
+              <FaSave className="btn-sep"></FaSave>
+            </span>
+            Submit form
+          </Button>
+        </Form>
+      </Container>
+
+      <Row className="addToast">
+        <Col xs={6}>
+          <Toast show={showA} onClose={toggleShowA} delay={3000} autohide>
+            <Toast.Header>
+              <img
+                src="holder.js/20x20?text=%20"
+                className="rounded me-2"
+                alt=""
               />
-            </LocalizationProvider>
-          </Form.Group>
-          <Form.Group as={Col} md="3" controlId="validationCustom07">
-            <Form.Label>Image</Form.Label>
-            <div className="custom-file mb-2">
-              <input
-                required
-                className="custom-file-input"
-                type="file"
-                id="customFile"
-                onChange={onChange}
-              />
-              <label className="custom-file-label" htmlFor="customFile">
-                {filename}
-              </label>
-            </div>
-          </Form.Group>
-        </Row>
-        <Button type="submit" className="btnAdd btn-1  icon-info">
-          <span class="btn-label">
-            <FaSave className="btn-sep"></FaSave>
-          </span>
-          Submit form
-        </Button>
-      </Form>
-    </Container>
+              <strong className="me-auto">Add Successful</strong>
+              <small></small>
+            </Toast.Header>
+            <Toast.Body>The Item was added successfully</Toast.Body>
+          </Toast>
+        </Col>
+        {/* <Col xs={6}>
+          <Button onClick={toggleShowA}>
+            Toggle Toast <strong>with</strong> Animation
+          </Button>
+        </Col> */}
+      </Row>
+    </div>
   );
 };
 

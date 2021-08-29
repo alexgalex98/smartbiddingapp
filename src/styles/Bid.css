@@ -45,6 +45,13 @@
   height: 100%;
   margin-right: 10%;
   margin-left: 10%;
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
   /* flex-shrink: 0; */
   /* width: 100%; */
   /* overflow: hidden; */
@@ -87,7 +94,7 @@
   cursor: pointer;
 }
 .box p {
-  line-height: 0;
+  /* line-height: 0; */
   /* margin: 15px 0; */
   max-width: 500px;
   /* border: 1px solid; */
@@ -159,12 +166,19 @@
 
 .card-badge {
   position: absolute;
-  top: 9.25rem;
+  top: 10.25rem;
   z-index: 1;
   background-color: #f4976c;
   vertical-align: middle;
   line-height: 30px;
   margin-bottom: 0px;
+  top: 30%;
+  left: 10%;
+
+  /* position: absolute;
+  z-index: 1;
+  top: 10%;
+  left: 10%; */
 }
 
 .badgetext {
@@ -188,14 +202,14 @@
 .startprice {
   font-size: 1.375rem !important;
   font-weight: 600 !important;
-  color: #ff6f61 !important;
+  color: #f4976c !important;
   margin-left: 20px !important;
 }
 
 .buynowprice {
   font-size: 1.375rem !important;
   font-weight: 600 !important;
-  color: #ff6f61 !important;
+  color: #f4976c !important;
   margin-left: 3.25rem !important;
 }
 
@@ -318,4 +332,14 @@
   padding-left: 5% !important;
   min-width: 200px;
   padding-right: 5% !important;
+}
+.toastBid {
+  margin-top: -150px;
+  position: fixed;
+  z-index: 11;
+  margin-left: 20px !important;
+}
+.descriptionBid {
+  max-width: 500px;
+  text-align: justify;
 }

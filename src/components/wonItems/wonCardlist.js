@@ -4,7 +4,7 @@ import "../../styles/Card.css";
 
 const WonCardList = ({ items }) => {
   return (
-    <div>
+    <div className="itemsListSpacing">
       {
         <Container className="mycardlist">
           <Row>
